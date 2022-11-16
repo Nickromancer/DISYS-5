@@ -1,0 +1,41 @@
+syntax = "proto3";
+option go_package = "github.com/Nickromancer/DISYS-5/proto";
+
+package proto;
+
+service Auction 
+{
+    rpc Bid (Amount) returns (Ack);
+    rpc Result (Empty) returns (Outcome);
+}
+
+message Empty {
+   
+}
+
+message Amount {
+    int32 lamportTime = 1;
+    int32 clientId = 2;
+    int32 bidAmount = 3;
+}
+
+message Ack {
+    enum RESULT {
+        SUCCESS = 0;
+        FAIL = 1;
+        EXCEPTION = 2;
+    }
+
+    int32 lamportTime = 1;
+    RESULT result = 2;
+}
+
+message Outcome {
+    enum STATE {
+        ONGOING = 0;
+        FINISHED = 1;
+        NOTSTARTED = 2;
+    }
+    STATE state = 1;
+    int32 winnerId = 2;
+}
