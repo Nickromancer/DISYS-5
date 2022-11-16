@@ -1,4 +1,4 @@
-package server
+package main
 
 import (
 	"context"
@@ -30,18 +30,6 @@ type Auction struct {
 	winnerAmount int32
 }
 
-// Function for incrementing lamport time
-func (s *Server) IncrementLamportTime(otherLamportTime int32) {
-	var mu sync.Mutex
-	defer mu.Unlock()
-	mu.Lock()
-	if s.lamportTime < otherLamportTime {
-		s.lamportTime = otherLamportTime + 1
-	} else {
-		s.lamportTime++
-	}
-}
-
 func main() {
 	arg1, _ := strconv.ParseInt(os.Args[1], 10, 32)
 	ownPort := int32(arg1) + 5000
@@ -61,7 +49,7 @@ func main() {
 	}
 
 	//Prints to log file and terminal
-	f, err := os.OpenFile(fmt.Sprint("logfile.%d", s.port), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	f, err := os.OpenFile(fmt.Sprint("logfile.%d", s.port)!, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)
 	}
@@ -74,6 +62,18 @@ func main() {
 	launchServer(s)
 }
 
+// Function for incrementing lamport time
+func (s *Server) IncrementLamportTime(otherLamportTime int32) {
+	var mu sync.Mutex
+	defer mu.Unlock()
+	mu.Lock()
+	if s.lamportTime < otherLamportTime {
+		s.lamportTime = otherLamportTime + 1
+	} else {
+		s.lamportTime++
+	}
+}
+
 func launchServer(s *Server) {
 	grpcServer := grpc.NewServer()
 
@@ -82,7 +82,7 @@ func launchServer(s *Server) {
 	if err != nil {
 		log.Fatalf("Could not create the server %v\n", err)
 	}
-	log.Printf("Started server at port %s\n", s.port)
+	log.Printf("Started server at port %d\n", s.port)
 
 	auction.RegisterAuctionServer(grpcServer, s)
 
@@ -129,6 +129,7 @@ func (s *Server) Bid(ctx context.Context, in *auction.Amount) (*auction.Ack, err
 	}
 }
 
+// Function to return the current result of the auction
 func (s *Server) Result(ctx context.Context, in *auction.Empty) (*auction.Outcome, error) {
 	return &auction.Outcome{
 		State:    s.auction.state,
@@ -136,6 +137,7 @@ func (s *Server) Result(ctx context.Context, in *auction.Empty) (*auction.Outcom
 	}, nil
 }
 
+// Function to return the current state of the server
 func (s *Server) StartAuction() {
 	time.Sleep(5000 * time.Millisecond)
 	s.auction.state = auction.Outcome_FINISHED
