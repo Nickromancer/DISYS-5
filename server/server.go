@@ -49,7 +49,7 @@ func main() {
 	}
 
 	//Prints to log file and terminal
-	f, err := os.OpenFile(fmt.Sprint("logfile.%d", s.port)!, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	f, err := os.OpenFile(fmt.Sprint("logfile.%d", s.port), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)
 	}
@@ -137,7 +137,7 @@ func (s *Server) Result(ctx context.Context, in *auction.Empty) (*auction.Outcom
 	}, nil
 }
 
-// Function to return the current state of the server
+// Function to start the auction with a default duration of 5 seconds
 func (s *Server) StartAuction() {
 	time.Sleep(5000 * time.Millisecond)
 	s.auction.state = auction.Outcome_FINISHED
