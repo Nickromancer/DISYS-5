@@ -49,7 +49,7 @@ func main() {
 	}
 
 	//Prints to log file and terminal
-	f, err := os.OpenFile(fmt.Sprint("logfile.%d", s.port), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	f, err := os.OpenFile(fmt.Sprintf("logfile.%d", s.port), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)
 	}
@@ -77,7 +77,7 @@ func (s *Server) IncrementLamportTime(otherLamportTime int32) {
 func launchServer(s *Server) {
 	grpcServer := grpc.NewServer()
 
-	listener, err := net.Listen("tcp", fmt.Sprint("localhost:%d", s.port))
+	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", s.port))
 
 	if err != nil {
 		log.Fatalf("Could not create the server %v\n", err)
