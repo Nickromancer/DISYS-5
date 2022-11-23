@@ -26,3 +26,75 @@ The current winning client: 5002 with bid: 10000
 2022/11/23 13:07:59 Connected to server port 5000
 2022/11/23 13:08:01 The auction is currently NOTSTARTED.
 The current winning client: -1 with bid: -1
+2022/11/23 13:12:38 Connected to server port 5000
+2022/11/23 13:12:43 The auction is currently NOTSTARTED.
+The current winning client: -1 with bid: -1
+2022/11/23 13:13:13 The auction is currently ONGOING.
+The current winning client: 5069 with bid: 100
+2022/11/23 13:13:15 Client 5001 sent a bid with amount: 200 (Lamport time 1)
+2022/11/23 13:13:15 Client 5001 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 1)
+2022/11/23 13:14:24 The auction is currently FINISHED.
+The current winning client: 5069 with bid: 6969
+2022/11/23 13:17:11 Client 5001 sent a bid with amount: 10000 (Lamport time 1)
+2022/11/23 13:17:11 Client 5001 received ack with result SUCCESS and Lamport time 6 (Client Lamport time 1)
+2022/11/23 13:17:14 Client 5001 sent a bid with amount: -1 (Lamport time 1)
+2022/11/23 13:17:14 Client 5001 received ack with result EXCEPTION and Lamport time 7 (Client Lamport time 1)
+2022/11/23 13:17:21 The auction is currently ONGOING.
+The current winning client: 5069 with bid: 1316134912
+2022/11/23 13:19:05 Client 5001 sent a bid with amount: 10000 (Lamport time 1)
+2022/11/23 13:19:05 Client 5001 received ack with result SUCCESS and Lamport time 13 (Client Lamport time 1)
+2022/11/23 13:19:10 The auction is currently ONGOING.
+The current winning client: 5001 with bid: 10000
+2022/11/23 13:19:19 The auction is currently ONGOING.
+The current winning client: 5420 with bid: 100049
+2022/11/23 13:19:22 The auction is currently ONGOING.
+The current winning client: 5420 with bid: 100049
+2022/11/23 13:19:26 Client 5001 sent a bid with amount: 10000000 (Lamport time 1)
+2022/11/23 13:19:26 Client 5001 received ack with result SUCCESS and Lamport time 25 (Client Lamport time 1)
+2022/11/23 13:19:38 The auction is currently FINISHED.
+The current winning client: 5001 with bid: 10000000
+2022/11/23 13:25:10 Connected to server port 5000
+2022/11/23 13:25:13 Client 5001 sent a bid with amount: 10 (Lamport time 2)
+2022/11/23 13:25:13 Client 5001 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 4)
+2022/11/23 13:25:37 The auction is currently FINISHED.
+The current winning client: 5069 with bid: 69
+2022/11/23 13:25:38 The auction is currently FINISHED.
+The current winning client: 5069 with bid: 69
+2022/11/23 13:25:39 The auction is currently FINISHED.
+The current winning client: 5069 with bid: 69
+2022/11/23 13:25:39 The auction is currently FINISHED.
+The current winning client: 5069 with bid: 69
+2022/11/23 13:25:40 The auction is currently FINISHED.
+The current winning client: 5069 with bid: 69
+2022/11/23 13:25:40 The auction is currently FINISHED.
+The current winning client: 5069 with bid: 69
+2022/11/23 13:25:40 Client 5001 sent a bid with amount: 10 (Lamport time 5)
+2022/11/23 13:25:40 Client 5001 received ack with result SUCCESS and Lamport time 6 (Client Lamport time 7)
+2022/11/23 13:25:41 Client 5001 sent a bid with amount: 10 (Lamport time 8)
+2022/11/23 13:25:41 Client 5001 received ack with result FAIL and Lamport time 9 (Client Lamport time 10)
+2022/11/23 13:25:41 Client 5001 sent a bid with amount: 10 (Lamport time 11)
+2022/11/23 13:25:41 Client 5001 received ack with result FAIL and Lamport time 12 (Client Lamport time 13)
+2022/11/23 13:25:41 Client 5001 sent a bid with amount: 10 (Lamport time 14)
+2022/11/23 13:25:41 Client 5001 received ack with result FAIL and Lamport time 15 (Client Lamport time 16)
+2022/11/23 13:25:41 Client 5001 sent a bid with amount: 10 (Lamport time 17)
+2022/11/23 13:25:41 Client 5001 received ack with result FAIL and Lamport time 18 (Client Lamport time 19)
+2022/11/23 13:25:42 Client 5001 sent a bid with amount: 10 (Lamport time 20)
+2022/11/23 13:25:42 Client 5001 received ack with result FAIL and Lamport time 21 (Client Lamport time 22)
+2022/11/23 13:25:42 Client 5001 sent a bid with amount: 10 (Lamport time 23)
+2022/11/23 13:25:42 Client 5001 received ack with result FAIL and Lamport time 24 (Client Lamport time 25)
+2022/11/23 13:25:42 Client 5001 sent a bid with amount: 10 (Lamport time 26)
+2022/11/23 13:25:42 Client 5001 received ack with result FAIL and Lamport time 27 (Client Lamport time 28)
+2022/11/23 13:25:43 Client 5001 sent a bid with amount: 10 (Lamport time 29)
+2022/11/23 13:25:43 Client 5001 received ack with result FAIL and Lamport time 30 (Client Lamport time 31)
+2022/11/23 13:25:43 Client 5001 sent a bid with amount: 10 (Lamport time 32)
+2022/11/23 13:25:43 Client 5001 received ack with result FAIL and Lamport time 33 (Client Lamport time 34)
+2022/11/23 13:25:43 Client 5001 sent a bid with amount: 10 (Lamport time 35)
+2022/11/23 13:25:43 Client 5001 received ack with result FAIL and Lamport time 36 (Client Lamport time 37)
+2022/11/23 13:25:44 Client 5001 sent a bid with amount: 10 (Lamport time 38)
+2022/11/23 13:25:44 Client 5001 received ack with result FAIL and Lamport time 39 (Client Lamport time 40)
+2022/11/23 13:25:44 Client 5001 sent a bid with amount: 10 (Lamport time 41)
+2022/11/23 13:25:44 Client 5001 received ack with result FAIL and Lamport time 42 (Client Lamport time 43)
+2022/11/23 13:25:44 Client 5001 sent a bid with amount: 10 (Lamport time 44)
+2022/11/23 13:25:44 Client 5001 received ack with result FAIL and Lamport time 45 (Client Lamport time 46)
+2022/11/23 13:26:27 Client 5001 sent a bid with amount: 10 (Lamport time 47)
+2022/11/23 13:26:27 Client 5001 received ack with result SUCCESS and Lamport time 56 (Client Lamport time 57)

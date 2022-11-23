@@ -9,6 +9,21 @@ service Auction
     rpc Result (Empty) returns (Outcome);
 }
 
+service Replication
+{
+    rpc BidBackup (Amount) returns (Acknowledgement);
+    rpc Result (Empty) returns (Acknowledgement);
+    rpc Ping (Empty) returns (Acknowledgement);
+}
+
+message Acknowledgement {
+    enum OUTCOME {
+        SUCCESS = 0;
+        FAIL = 1;
+    }
+    OUTCOME outcome = 1;
+}
+
 message Empty {
    
 }
