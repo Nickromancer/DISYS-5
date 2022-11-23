@@ -39,5 +39,4 @@ message Outcome {
     STATE state = 1;
     int32 winnerId = 2;
     int32 winningBid = 3;
-    int32 lamportTime = 4;
 }
