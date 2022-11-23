@@ -11,8 +11,8 @@ service Auction
 
 service Replication
 {
-    rpc BidBackup (Amount) returns (AckReply);
-    rpc Result (Empty) returns (OutcomeReply);
+    rpc BidBackup (Amount) returns (Ack);
+    rpc ResultBackup (Empty) returns (Outcome);
     rpc Ping (Empty) returns (Acknowledgement);
 }
 
@@ -22,24 +22,6 @@ message Acknowledgement {
         FAIL = 1;
     }
     RESULT result = 1;
-}
-
-message AckReply {
-    enum RESULT {
-        SUCCESS = 0;
-        FAIL = 1;
-    }
-    RESULT result = 1;
-    Ack ack = 2;
-}
-
-message OutcomeReply {
-    enum RESULT {
-        SUCCESS = 0;
-        FAIL = 1;
-    }
-    RESULT result = 1;
-    Outcome outcome = 2;
 }
 
 message Empty {

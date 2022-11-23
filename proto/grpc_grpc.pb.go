@@ -140,8 +140,8 @@ var Auction_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ReplicationClient interface {
-	BidBackup(ctx context.Context, in *Amount, opts ...grpc.CallOption) (*AckReply, error)
-	Result(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*OutcomeReply, error)
+	BidBackup(ctx context.Context, in *Amount, opts ...grpc.CallOption) (*Ack, error)
+	ResultBackup(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Outcome, error)
 	Ping(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Acknowledgement, error)
 }
 
@@ -153,8 +153,8 @@ func NewReplicationClient(cc grpc.ClientConnInterface) ReplicationClient {
 	return &replicationClient{cc}
 }
 
-func (c *replicationClient) BidBackup(ctx context.Context, in *Amount, opts ...grpc.CallOption) (*AckReply, error) {
-	out := new(AckReply)
+func (c *replicationClient) BidBackup(ctx context.Context, in *Amount, opts ...grpc.CallOption) (*Ack, error) {
+	out := new(Ack)
 	err := c.cc.Invoke(ctx, "/proto.Replication/BidBackup", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -162,9 +162,9 @@ func (c *replicationClient) BidBackup(ctx context.Context, in *Amount, opts ...g
 	return out, nil
 }
 
-func (c *replicationClient) Result(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*OutcomeReply, error) {
-	out := new(OutcomeReply)
-	err := c.cc.Invoke(ctx, "/proto.Replication/Result", in, out, opts...)
+func (c *replicationClient) ResultBackup(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Outcome, error) {
+	out := new(Outcome)
+	err := c.cc.Invoke(ctx, "/proto.Replication/ResultBackup", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -184,8 +184,8 @@ func (c *replicationClient) Ping(ctx context.Context, in *Empty, opts ...grpc.Ca
 // All implementations must embed UnimplementedReplicationServer
 // for forward compatibility
 type ReplicationServer interface {
-	BidBackup(context.Context, *Amount) (*AckReply, error)
-	Result(context.Context, *Empty) (*OutcomeReply, error)
+	BidBackup(context.Context, *Amount) (*Ack, error)
+	ResultBackup(context.Context, *Empty) (*Outcome, error)
 	Ping(context.Context, *Empty) (*Acknowledgement, error)
 	mustEmbedUnimplementedReplicationServer()
 }
@@ -194,11 +194,11 @@ type ReplicationServer interface {
 type UnimplementedReplicationServer struct {
 }
 
-func (UnimplementedReplicationServer) BidBackup(context.Context, *Amount) (*AckReply, error) {
+func (UnimplementedReplicationServer) BidBackup(context.Context, *Amount) (*Ack, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BidBackup not implemented")
 }
-func (UnimplementedReplicationServer) Result(context.Context, *Empty) (*OutcomeReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Result not implemented")
+func (UnimplementedReplicationServer) ResultBackup(context.Context, *Empty) (*Outcome, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResultBackup not implemented")
 }
 func (UnimplementedReplicationServer) Ping(context.Context, *Empty) (*Acknowledgement, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
@@ -234,20 +234,20 @@ func _Replication_BidBackup_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Replication_Result_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Replication_ResultBackup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ReplicationServer).Result(ctx, in)
+		return srv.(ReplicationServer).ResultBackup(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/proto.Replication/Result",
+		FullMethod: "/proto.Replication/ResultBackup",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ReplicationServer).Result(ctx, req.(*Empty))
+		return srv.(ReplicationServer).ResultBackup(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -282,8 +282,8 @@ var Replication_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Replication_BidBackup_Handler,
 		},
 		{
-			MethodName: "Result",
-			Handler:    _Replication_Result_Handler,
+			MethodName: "ResultBackup",
+			Handler:    _Replication_ResultBackup_Handler,
 		},
 		{
 			MethodName: "Ping",
