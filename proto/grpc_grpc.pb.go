@@ -140,8 +140,8 @@ var Auction_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ReplicationClient interface {
-	BidBackup(ctx context.Context, in *Amount, opts ...grpc.CallOption) (*Acknowledgement, error)
-	Result(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Acknowledgement, error)
+	BidBackup(ctx context.Context, in *Amount, opts ...grpc.CallOption) (*AckReply, error)
+	Result(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*OutcomeReply, error)
 	Ping(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Acknowledgement, error)
 }
 
@@ -153,8 +153,8 @@ func NewReplicationClient(cc grpc.ClientConnInterface) ReplicationClient {
 	return &replicationClient{cc}
 }
 
-func (c *replicationClient) BidBackup(ctx context.Context, in *Amount, opts ...grpc.CallOption) (*Acknowledgement, error) {
-	out := new(Acknowledgement)
+func (c *replicationClient) BidBackup(ctx context.Context, in *Amount, opts ...grpc.CallOption) (*AckReply, error) {
+	out := new(AckReply)
 	err := c.cc.Invoke(ctx, "/proto.Replication/BidBackup", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -162,8 +162,8 @@ func (c *replicationClient) BidBackup(ctx context.Context, in *Amount, opts ...g
 	return out, nil
 }
 
-func (c *replicationClient) Result(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Acknowledgement, error) {
-	out := new(Acknowledgement)
+func (c *replicationClient) Result(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*OutcomeReply, error) {
+	out := new(OutcomeReply)
 	err := c.cc.Invoke(ctx, "/proto.Replication/Result", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -184,8 +184,8 @@ func (c *replicationClient) Ping(ctx context.Context, in *Empty, opts ...grpc.Ca
 // All implementations must embed UnimplementedReplicationServer
 // for forward compatibility
 type ReplicationServer interface {
-	BidBackup(context.Context, *Amount) (*Acknowledgement, error)
-	Result(context.Context, *Empty) (*Acknowledgement, error)
+	BidBackup(context.Context, *Amount) (*AckReply, error)
+	Result(context.Context, *Empty) (*OutcomeReply, error)
 	Ping(context.Context, *Empty) (*Acknowledgement, error)
 	mustEmbedUnimplementedReplicationServer()
 }
@@ -194,10 +194,10 @@ type ReplicationServer interface {
 type UnimplementedReplicationServer struct {
 }
 
-func (UnimplementedReplicationServer) BidBackup(context.Context, *Amount) (*Acknowledgement, error) {
+func (UnimplementedReplicationServer) BidBackup(context.Context, *Amount) (*AckReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BidBackup not implemented")
 }
-func (UnimplementedReplicationServer) Result(context.Context, *Empty) (*Acknowledgement, error) {
+func (UnimplementedReplicationServer) Result(context.Context, *Empty) (*OutcomeReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Result not implemented")
 }
 func (UnimplementedReplicationServer) Ping(context.Context, *Empty) (*Acknowledgement, error) {

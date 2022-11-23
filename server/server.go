@@ -25,6 +25,13 @@ type Server struct {
 	ctx         context.Context
 }
 
+type ReplicationClient struct {
+	port        int32
+	serverPort  int32
+	lamportTime int32
+	context     context.Context
+}
+
 type Auction struct {
 	state        auction.Outcome_STATE
 	winnerId     int32
@@ -33,7 +40,10 @@ type Auction struct {
 
 func main() {
 	arg1, _ := strconv.ParseInt(os.Args[1], 10, 32)
+	arg2, _ := strconv.ParseInt(os.Args[2], 10, 32)
 	ownPort := int32(arg1) + 5000
+	clientPort := int32(arg2) + 6000
+	serverPort := int32(arg) + 6000
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -48,6 +58,10 @@ func main() {
 		},
 		wg:  sync.WaitGroup{},
 		ctx: ctx,
+	}
+
+	c := &ReplicationClient{
+		port: clientPort,
 	}
 
 	//Prints to log file and terminal
