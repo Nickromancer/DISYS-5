@@ -3,3 +3,19 @@
 2022/11/16 16:13:57 Connected to server port 5000
 2022/11/23 12:12:57 Connected to server port 5000
 2022/11/23 12:13:40 Connected to server port 5000
+2022/11/23 12:38:05 Connected to server port 5000
+2022/11/23 12:38:22 The auction is currently NOTSTARTED.
+The current winning client: -1 with bid: -1
+2022/11/23 12:38:37 Client 5001 sent a bid with amount: 100 (Lamport time 1)
+2022/11/23 12:38:37 Client 5001 received ack with result SUCCESS and Lamport time 2 (Client Lamport time 1)
+2022/11/23 12:39:21 Connected to server port 5000
+2022/11/23 12:40:28 Client 5001 sent a bid with amount: 100 (Lamport time 1)
+2022/11/23 12:40:28 Client 5001 received ack with result SUCCESS and Lamport time 2 (Client Lamport time 1)
+2022/11/23 12:46:14 Connected to server port 5000
+2022/11/23 12:46:19 Client 5001 sent a bid with amount: 100 (Lamport time 1)
+2022/11/23 12:46:19 Client 5001 received ack with result SUCCESS and Lamport time 2 (Client Lamport time 1)
+2022/11/23 12:47:11 Client 5001 sent a bid with amount: 100 (Lamport time 1)
+2022/11/23 12:47:11 Client 5001 received ack with result SUCCESS and Lamport time 4 (Client Lamport time 1)
+2022/11/23 12:47:21 The auction is currently ONGOING.
+The current winning client: 5002 with bid: 10000
+2022/11/23 13:00:02 Connected to server port 5000
