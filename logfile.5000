@@ -61,3 +61,7 @@ Sent result reply with outcome FINISHED, winnerId 5002 and winneramount 10000
 2022/11/23 13:05:38 Start new auction with starting bid 1000 and winnerId 5001.
 2022/11/23 13:05:38 Auction has started! Let the bidding begin!
 2022/11/23 13:05:48 Auction is done!
+2022/11/23 13:07:48 Server is starting
+2022/11/23 13:07:48 Started server at port 5000
+2022/11/23 13:08:01 Server received result request.
+Sent result reply with outcome NOTSTARTED, winnerId -1 and winneramount -1

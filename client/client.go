@@ -68,7 +68,10 @@ func main() {
 		input := scanner.Text()
 		splitted := strings.Fields(input)
 		if splitted[0] == "/bid" {
-			bidAmount, _ := strconv.Atoi(splitted[1])
+			bidAmount, err := strconv.Atoi(splitted[1])
+			if err != nil {
+				log.Printf("Please enter a valid bid amount.")
+			}
 			log.Printf("Client %d sent a bid with amount: %d (Lamport time %d)\n", c.port, bidAmount, c.lamportTime)
 			ack, err := serverConnection.Bid(c.ctx, &auction.Amount{
 				LamportTime: c.lamportTime,
@@ -92,7 +95,7 @@ func main() {
 }
 
 func (c *Client) connectToServer() (auction.AuctionClient, error) {
-	conn, err := grpc.Dial(fmt.Sprintf("10.28.22.31:%d", c.serverPort), grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.Dial(fmt.Sprintf("192.168.26.195:%d", c.serverPort), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Could not connect to port %d\n", c.serverPort)
 	}
