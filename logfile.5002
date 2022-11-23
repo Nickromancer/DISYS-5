@@ -23,3 +23,6 @@ The current winning client: 5002 with bid: 10000
 2022/11/23 15:02:32 Client 5002 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 4)
 2022/11/23 15:02:40 The auction is currently ONGOING.
 The current winning client: 5002 with bid: 10
+2022/11/23 15:20:32 Connected to server port 5000
+2022/11/23 15:20:54 Client 5002 sent a bid with amount: 2000 (Lamport time 2)
+2022/11/23 15:20:54 Client 5002 received ack with result SUCCESS and Lamport time 4 (Client Lamport time 5)
