@@ -79,7 +79,7 @@ func (s *Server) IncrementLamportTime(otherLamportTime int32) {
 func launchServer(s *Server) {
 	grpcServer := grpc.NewServer()
 
-	listener, err := net.Listen("tcp", fmt.Sprintf("172.20.96.1:%d", s.port))
+	listener, err := net.Listen("tcp", fmt.Sprintf("10.28.22.31:%d", s.port))
 
 	if err != nil {
 		log.Fatalf("Could not create the server %v\n", err)
