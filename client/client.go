@@ -68,6 +68,7 @@ func main() {
 		input := scanner.Text()
 		splitted := strings.Fields(input)
 		if splitted[0] == "/bid" {
+			c.IncrementLamportTime(-1)
 			bidAmount, err := strconv.Atoi(splitted[1])
 			if err != nil {
 				log.Printf("Please enter a valid bid amount.")
@@ -81,6 +82,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("Could not send a bid to the server.\n")
 			}
+			c.IncrementLamportTime(ack.LamportTime)
 			log.Printf("Client %d received ack with result %s and Lamport time %d (Client Lamport time %d)\n",
 				c.port, ack.Result.String(), ack.LamportTime, c.lamportTime)
 
