@@ -97,7 +97,7 @@ func main() {
 }
 
 func (c *Client) connectToServer() (auction.AuctionClient, error) {
-	conn, err := grpc.Dial(fmt.Sprintf("192.168.26.195:%d", c.serverPort), grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.Dial(fmt.Sprintf("localhost:%d", c.serverPort), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Could not connect to port %d\n", c.serverPort)
 	}

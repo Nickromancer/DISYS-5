@@ -6,7 +6,6 @@ import (
 	"io"
 	"os"
 	"strconv"
-	"sync"
 
 	auction "github.com/Nickromancer/DISYS-5/proto"
 	"google.golang.org/grpc"
@@ -19,9 +18,7 @@ import (
 type Frontend struct {
 	auction.UnimplementedAuctionServer
 	port              int32
-	auction           Auction
 	replicationClient ReplicationClient
-	wg                sync.WaitGroup
 	ctx               context.Context
 }
 
@@ -29,12 +26,6 @@ type ReplicationClient struct {
 	port       int32
 	serverPort int32
 	ctx        context.Context
-}
-
-type Auction struct {
-	state        auction.Outcome_STATE
-	winnerId     int32
-	winnerAmount int32
 }
 
 var serverConnection auction.ReplicationClient
@@ -56,14 +47,8 @@ func main() {
 	}
 
 	s := &Frontend{
-		port: ownPort,
-		auction: Auction{
-			state:        auction.Outcome_NOTSTARTED,
-			winnerId:     -1,
-			winnerAmount: -1,
-		},
+		port:              ownPort,
 		replicationClient: *c,
-		wg:                sync.WaitGroup{},
 		ctx:               ctx,
 	}
 
@@ -83,24 +68,10 @@ func main() {
 	launchServer(s)
 }
 
-/*
-// Function for incrementing lamport time
-
-	func (s *Server) IncrementLamportTime(otherLamportTime int32) {
-		var mu sync.Mutex
-		defer mu.Unlock()
-		mu.Lock()
-		if s.lamportTime < otherLamportTime {
-			s.lamportTime = otherLamportTime + 1
-		} else {
-			s.lamportTime++
-		}
-	}
-*/
 func launchServer(s *Frontend) {
 	grpcServer := grpc.NewServer()
 
-	listener, err := net.Listen("tcp", fmt.Sprintf("192.168.26.195:%d", s.port))
+	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", s.port))
 
 	if err != nil {
 		log.Fatalf("Could not create the server %v\n", err)
@@ -117,92 +88,23 @@ func launchServer(s *Frontend) {
 
 func (s *Frontend) Bid(ctx context.Context, in *auction.Amount) (*auction.Ack, error) {
 
-	ackReply, _ := serverConnection.BidBackup(ctx, in)
+	ack, _ := serverConnection.BidBackup(ctx, in)
 
-	return ackReply.Ack, nil
-	/*
-		s.IncrementLamportTime(in.LamportTime)
-		log.Printf("Server has received a bid from client %d with amount %d and Lamport time %d (Lamport time %d)\n",
-		in.ClientId, in.BidAmount, in.LamportTime, s.lamportTime)
-		// If attempted bid is less than or equal to 0, return exception
-		if in.BidAmount <= 0 {
-			log.Printf("Recieved bid was less and/or equal to zero, bad bid: %s.\n", auction.Ack_EXCEPTION.String())
-			return &auction.Ack{
-				LamportTime: s.lamportTime,
-				Result:      auction.Ack_EXCEPTION,
-			}, nil
-		}
-		// If auction is not started, start new auction with starting bid set as highest bid
-		if s.auction.state == auction.Outcome_NOTSTARTED || s.auction.state == auction.Outcome_FINISHED {
-			log.Printf("Start new auction with starting bid %d and winnerId %d.\n", in.BidAmount, in.ClientId)
-			s.auction.state = auction.Outcome_ONGOING
-			s.auction.winnerId = in.ClientId
-			s.auction.winnerAmount = in.BidAmount
-			go s.StartAuction()
-			return &auction.Ack{
-				LamportTime: s.lamportTime,
-				Result:      auction.Ack_SUCCESS,
-			}, nil
-		} else {
-			// If auction is ongoing, check if bid is higher than current highest bid
-			if s.auction.winnerAmount < in.BidAmount {
-				log.Printf("New bid %d from client %d is highest bid.\n", in.BidAmount, in.ClientId)
-				log.Printf("Extending auction.\n")
-				go s.ExtendAuction()
-				s.auction.winnerAmount = in.BidAmount
-				s.auction.winnerId = in.ClientId
-				return &auction.Ack{
-					LamportTime: s.lamportTime,
-					Result:      auction.Ack_SUCCESS,
-				}, nil
-			} else {
-				log.Printf("You have to bid higher than the previous bidder, you donut.\n")
-				return &auction.Ack{
-					LamportTime: s.lamportTime,
-					Result:      auction.Ack_FAIL,
-				}, nil
-			}
-		}
-	*/
+	return ack, nil
+
 }
 
 // Function to return the current result of the auction
 func (s *Frontend) Result(ctx context.Context, in *auction.Empty) (*auction.Outcome, error) {
-	log.Printf("Server received result request.\nSent result reply with outcome %s, winnerId %d and winneramount %d\n",
-		s.auction.state.String(), s.auction.winnerId, s.auction.winnerAmount)
 
-	outcomeReply, _ := serverConnection.Result(ctx, in)
+	outcome, _ := serverConnection.ResultBackup(ctx, in)
 
-	return outcomeReply.Outcome, nil
-	/*
-		return &auction.Outcome{
-			State:      s.auction.state,
-			WinnerId:   s.auction.winnerId,
-			WinningBid: s.auction.winnerAmount,
-		}, nil
-	*/
+	return outcome, nil
+
 }
-
-/*
-// Function to start the auction with a default duration of 5 seconds
-func (s *Server) StartAuction() {
-	log.Printf("Auction has started! Let the bidding begin!\n")
-	time.Sleep(10000 * time.Millisecond)
-	s.wg.Wait()
-	s.auction.state = auction.Outcome_FINISHED
-	log.Printf("Auction is done!\n")
-}
-
-// Function to start the auction with a default duration of 5 seconds
-func (s *Server) ExtendAuction() {
-	s.wg.Add(1)
-	time.Sleep(5000 * time.Millisecond)
-	s.wg.Done()
-}
-*/
 
 func (c *ReplicationClient) connectToServer() (auction.ReplicationClient, error) {
-	conn, err := grpc.Dial(fmt.Sprintf("192.168.26.195:%d", c.serverPort), grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.Dial(fmt.Sprintf("localhost:%d", c.serverPort), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Could not connect to port %d\n", c.serverPort)
 	}
