@@ -84,9 +84,9 @@ func main() {
 		} else if splitted[0] == "/result" {
 			outcome, err := serverConnection.Result(ctx, &auction.Empty{})
 			if err != nil {
-				log.Fatalf("Could not connect to the server :(")
+				log.Fatalf("Could not get a result from the server.\n")
 			}
-			log.Printf("The current winning amount is: %d", outcome)
+			log.Printf("The auction is currently %s.\nThe current winning client: %d with bid: %d\n", outcome.State.String(), outcome.WinnerId, outcome.WinningBid)
 		}
 	}
 }

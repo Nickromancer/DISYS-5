@@ -132,8 +132,9 @@ func (s *Server) Bid(ctx context.Context, in *auction.Amount) (*auction.Ack, err
 // Function to return the current result of the auction
 func (s *Server) Result(ctx context.Context, in *auction.Empty) (*auction.Outcome, error) {
 	return &auction.Outcome{
-		State:    s.auction.state,
-		WinnerId: s.auction.winnerId,
+		State:      s.auction.state,
+		WinnerId:   s.auction.winnerId,
+		WinningBid: s.auction.winnerAmount,
 	}, nil
 }
 
