@@ -142,7 +142,7 @@ var Auction_ServiceDesc = grpc.ServiceDesc{
 type ReplicationClient interface {
 	BidBackup(ctx context.Context, in *Amount, opts ...grpc.CallOption) (*Ack, error)
 	ResultBackup(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Outcome, error)
-	Ping(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Acknowledgement, error)
+	Ping(ctx context.Context, in *PingMessage, opts ...grpc.CallOption) (*PingMessage, error)
 }
 
 type replicationClient struct {
@@ -171,8 +171,8 @@ func (c *replicationClient) ResultBackup(ctx context.Context, in *Empty, opts ..
 	return out, nil
 }
 
-func (c *replicationClient) Ping(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Acknowledgement, error) {
-	out := new(Acknowledgement)
+func (c *replicationClient) Ping(ctx context.Context, in *PingMessage, opts ...grpc.CallOption) (*PingMessage, error) {
+	out := new(PingMessage)
 	err := c.cc.Invoke(ctx, "/proto.Replication/Ping", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -186,7 +186,7 @@ func (c *replicationClient) Ping(ctx context.Context, in *Empty, opts ...grpc.Ca
 type ReplicationServer interface {
 	BidBackup(context.Context, *Amount) (*Ack, error)
 	ResultBackup(context.Context, *Empty) (*Outcome, error)
-	Ping(context.Context, *Empty) (*Acknowledgement, error)
+	Ping(context.Context, *PingMessage) (*PingMessage, error)
 	mustEmbedUnimplementedReplicationServer()
 }
 
@@ -200,7 +200,7 @@ func (UnimplementedReplicationServer) BidBackup(context.Context, *Amount) (*Ack,
 func (UnimplementedReplicationServer) ResultBackup(context.Context, *Empty) (*Outcome, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResultBackup not implemented")
 }
-func (UnimplementedReplicationServer) Ping(context.Context, *Empty) (*Acknowledgement, error) {
+func (UnimplementedReplicationServer) Ping(context.Context, *PingMessage) (*PingMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
 }
 func (UnimplementedReplicationServer) mustEmbedUnimplementedReplicationServer() {}
@@ -253,7 +253,7 @@ func _Replication_ResultBackup_Handler(srv interface{}, ctx context.Context, dec
 }
 
 func _Replication_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+	in := new(PingMessage)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -265,7 +265,7 @@ func _Replication_Ping_Handler(srv interface{}, ctx context.Context, dec func(in
 		FullMethod: "/proto.Replication/Ping",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ReplicationServer).Ping(ctx, req.(*Empty))
+		return srv.(ReplicationServer).Ping(ctx, req.(*PingMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }

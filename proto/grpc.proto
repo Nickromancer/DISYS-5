@@ -13,15 +13,11 @@ service Replication
 {
     rpc BidBackup (Amount) returns (Ack);
     rpc ResultBackup (Empty) returns (Outcome);
-    rpc Ping (Empty) returns (Acknowledgement);
+    rpc Ping (PingMessage) returns (PingMessage);
 }
 
-message Acknowledgement {
-    enum RESULT {
-        SUCCESS = 0;
-        FAIL = 1;
-    }
-    RESULT result = 1;
+message PingMessage {
+    int32 Id = 1;
 }
 
 message Empty {
