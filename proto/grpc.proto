@@ -14,6 +14,11 @@ service Replication
     rpc BidBackup (Amount) returns (Ack);
     rpc ResultBackup (Empty) returns (Outcome);
     rpc Ping (PingMessage) returns (PingMessage);
+    rpc IsPrimaryServer (Empty) returns (PrimaryServerResponse);
+}
+
+message PrimaryServerResponse {
+    bool primaryServer = 1;
 }
 
 message PingMessage {

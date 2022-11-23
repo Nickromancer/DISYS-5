@@ -17,18 +17,17 @@ import (
 
 type Frontend struct {
 	auction.UnimplementedAuctionServer
-	port              int32
-	replicationClient ReplicationClient
-	ctx               context.Context
+	port               int32
+	replicationClient  ReplicationClient
+	replicationServers map[int32]auction.ReplicationClient
+	ctx                context.Context
 }
 
 type ReplicationClient struct {
-	port       int32
-	serverPort int32
-	ctx        context.Context
+	port              int32
+	primaryServerPort int32
+	ctx               context.Context
 }
-
-var serverConnection auction.ReplicationClient
 
 func main() {
 	arg1, _ := strconv.ParseInt(os.Args[1], 10, 32)
@@ -41,18 +40,23 @@ func main() {
 	defer cancel()
 
 	c := &ReplicationClient{
-		port:       clientPort,
-		serverPort: serverPort,
-		ctx:        ctx,
-	}
-
-	s := &Frontend{
-		port:              ownPort,
-		replicationClient: *c,
+		port:              clientPort,
+		primaryServerPort: serverPort,
 		ctx:               ctx,
 	}
 
-	serverConnection, _ = c.connectToServer()
+	s := &Frontend{
+		port:               ownPort,
+		replicationClient:  *c,
+		replicationServers: make(map[int32]auction.ReplicationClient),
+		ctx:                ctx,
+	}
+
+	for i := 0; i < 3; i++ {
+		port := int32(6000) + int32(i)
+		serverConnection, _ := c.connectToServer(port)
+		s.replicationServers[port] = serverConnection
+	}
 
 	//Prints to log file and terminal
 	f, err := os.OpenFile(fmt.Sprintf("logfile.%d", s.port), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
@@ -86,9 +90,24 @@ func launchServer(s *Frontend) {
 	}
 }
 
+func (s *Frontend) findNewPrimaryServer() {
+	delete(s.replicationServers, s.replicationClient.primaryServerPort)
+
+	primaryServerFound := false
+	for !primaryServerFound {
+		for id, client := range s.replicationServers {
+			reply, err := client.IsPrimaryServer(s.ctx)
+		}
+	}
+}
+
 func (s *Frontend) Bid(ctx context.Context, in *auction.Amount) (*auction.Ack, error) {
 
-	ack, _ := serverConnection.BidBackup(ctx, in)
+	ack, err := s.replicationServers[s.replicationClient.primaryServerPort].BidBackup(ctx, in)
+	if err != nil {
+		log.Printf("Primary server is not responding.\n")
+		s.findNewPrimaryServer()
+	}
 
 	return ack, nil
 
@@ -97,17 +116,21 @@ func (s *Frontend) Bid(ctx context.Context, in *auction.Amount) (*auction.Ack, e
 // Function to return the current result of the auction
 func (s *Frontend) Result(ctx context.Context, in *auction.Empty) (*auction.Outcome, error) {
 
-	outcome, _ := serverConnection.ResultBackup(ctx, in)
+	outcome, err := s.replicationServers[s.replicationClient.primaryServerPort].ResultBackup(ctx, in)
+	if err != nil {
+		log.Printf("Primary server is not responding.\n")
+		s.findNewPrimaryServer()
+	}
 
 	return outcome, nil
 
 }
 
-func (c *ReplicationClient) connectToServer() (auction.ReplicationClient, error) {
-	conn, err := grpc.Dial(fmt.Sprintf("localhost:%d", c.serverPort), grpc.WithTransportCredentials(insecure.NewCredentials()))
+func (c *ReplicationClient) connectToServer(connectionPort int32) (auction.ReplicationClient, error) {
+	conn, err := grpc.Dial(fmt.Sprintf("localhost:%d", c.primaryServerPort), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
-		log.Fatalf("Could not connect to port %d\n", c.serverPort)
+		log.Fatalf("Could not connect to port %d\n", c.primaryServerPort)
 	}
-	log.Printf("Connected to server port %d\n", c.serverPort)
+	log.Printf("Connected to server port %d\n", c.primaryServerPort)
 	return auction.NewReplicationClient(conn), nil
 }

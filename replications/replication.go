@@ -69,7 +69,7 @@ func main() {
 		}
 	}()
 
-	for i := 0; i < 1; i++ {
+	for i := 0; i < 3; i++ {
 		port := int32(6000) + int32(i)
 		if port == ownPort {
 			continue
@@ -88,20 +88,38 @@ func main() {
 
 	go func() {
 		for !p.primaryServer {
-			state, err := p.clients[6000].Ping(ctx, &auction.Empty{})
+			log.Printf("Trying to ping primary server.\n")
+			_, err := p.clients[6000].Ping(ctx, &auction.PingMessage{Id: p.id})
 			if err != nil {
 				log.Printf("The king is dead. Long live the king!\n")
+				p.elect()
 			}
-			if state.Result == auction.Acknowledgement_SUCCESS {
-				time.Sleep(2000 * time.Millisecond)
-			} else {
-				//start election
-			}
+			log.Printf("Succesfully pinged primary server.\n")
+			time.Sleep(2000 * time.Millisecond)
 		}
 	}()
 
 	for {
 
+	}
+}
+
+func (p *peer) elect() {
+	delete(p.clients, 6000)
+	lowestId := p.id
+	for id, client := range p.clients {
+		reply, err := client.Ping(p.ctx, &auction.PingMessage{Id: p.id})
+		if err != nil {
+			fmt.Println("something went wrong")
+		}
+		fmt.Printf("Got reply from id %v: %v\n", id, reply.Id)
+		if lowestId > reply.Id {
+			lowestId = reply.Id
+		}
+	}
+	log.Printf("New king of the hill is %d", lowestId)
+	if lowestId == p.id {
+		p.primaryServer = true
 	}
 }
 
@@ -117,14 +135,30 @@ func (p *peer) IncrementLamportTime(otherLamportTime int32) {
 	}
 }
 
-func (p *peer) Ping(ctx context.Context, in *auction.Empty) (*auction.Acknowledgement, error) {
+func (p *peer) Ping(ctx context.Context, in *auction.PingMessage) (*auction.PingMessage, error) {
 	log.Printf("Received a ping!\n")
-	return &auction.Acknowledgement{
-		Result: auction.Acknowledgement_SUCCESS,
+	return &auction.PingMessage{
+		Id: p.id,
 	}, nil
 }
 
 func (p *peer) BidBackup(ctx context.Context, in *auction.Amount) (*auction.Ack, error) {
+	if p.primaryServer {
+		var wg sync.WaitGroup
+		for id, client := range p.clients {
+			wg.Add(1)
+			go func(clientId int32, requestClient auction.ReplicationClient) {
+				defer wg.Done()
+				log.Printf("Sending request to %d", clientId)
+				_, err := requestClient.BidBackup(ctx, in)
+				if err != nil {
+					fmt.Println("something went wrong")
+				}
+			}(id, client)
+		}
+		wg.Wait()
+		log.Printf("Received acknowledgements from all backups.\n")
+	}
 
 	p.IncrementLamportTime(in.LamportTime)
 	log.Printf("Server has received a bid from client %d with amount %d and Lamport time %d (Lamport time %d)\n",
@@ -171,6 +205,22 @@ func (p *peer) BidBackup(ctx context.Context, in *auction.Amount) (*auction.Ack,
 }
 
 func (p *peer) ResultBackup(ctx context.Context, in *auction.Empty) (*auction.Outcome, error) {
+	if p.primaryServer {
+		var wg sync.WaitGroup
+		for id, client := range p.clients {
+			wg.Add(1)
+			go func(clientId int32, requestClient auction.ReplicationClient) {
+				defer wg.Done()
+				log.Printf("Sending request to %d", clientId)
+				_, err := requestClient.ResultBackup(ctx, in)
+				if err != nil {
+					fmt.Println("something went wrong")
+				}
+			}(id, client)
+		}
+		wg.Wait()
+		log.Printf("Received acknowledgements from all backups.\n")
+	}
 
 	log.Printf("Server received result request.\nSent result reply with outcome %s, winnerId %d and winneramount %d\n",
 		p.auction.state.String(), p.auction.winnerId, p.auction.winnerAmount)

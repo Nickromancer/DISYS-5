@@ -143,6 +143,7 @@ type ReplicationClient interface {
 	BidBackup(ctx context.Context, in *Amount, opts ...grpc.CallOption) (*Ack, error)
 	ResultBackup(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Outcome, error)
 	Ping(ctx context.Context, in *PingMessage, opts ...grpc.CallOption) (*PingMessage, error)
+	IsPrimaryServer(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*PrimaryServerResponse, error)
 }
 
 type replicationClient struct {
@@ -180,6 +181,15 @@ func (c *replicationClient) Ping(ctx context.Context, in *PingMessage, opts ...g
 	return out, nil
 }
 
+func (c *replicationClient) IsPrimaryServer(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*PrimaryServerResponse, error) {
+	out := new(PrimaryServerResponse)
+	err := c.cc.Invoke(ctx, "/proto.Replication/IsPrimaryServer", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ReplicationServer is the server API for Replication service.
 // All implementations must embed UnimplementedReplicationServer
 // for forward compatibility
@@ -187,6 +197,7 @@ type ReplicationServer interface {
 	BidBackup(context.Context, *Amount) (*Ack, error)
 	ResultBackup(context.Context, *Empty) (*Outcome, error)
 	Ping(context.Context, *PingMessage) (*PingMessage, error)
+	IsPrimaryServer(context.Context, *Empty) (*PrimaryServerResponse, error)
 	mustEmbedUnimplementedReplicationServer()
 }
 
@@ -202,6 +213,9 @@ func (UnimplementedReplicationServer) ResultBackup(context.Context, *Empty) (*Ou
 }
 func (UnimplementedReplicationServer) Ping(context.Context, *PingMessage) (*PingMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+}
+func (UnimplementedReplicationServer) IsPrimaryServer(context.Context, *Empty) (*PrimaryServerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method IsPrimaryServer not implemented")
 }
 func (UnimplementedReplicationServer) mustEmbedUnimplementedReplicationServer() {}
 
@@ -270,6 +284,24 @@ func _Replication_Ping_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Replication_IsPrimaryServer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReplicationServer).IsPrimaryServer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.Replication/IsPrimaryServer",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReplicationServer).IsPrimaryServer(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Replication_ServiceDesc is the grpc.ServiceDesc for Replication service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -288,6 +320,10 @@ var Replication_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Ping",
 			Handler:    _Replication_Ping_Handler,
+		},
+		{
+			MethodName: "IsPrimaryServer",
+			Handler:    _Replication_IsPrimaryServer_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
