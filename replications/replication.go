@@ -198,6 +198,7 @@ func (p *peer) BidBackup(ctx context.Context, in *auction.Amount) (*auction.Ack,
 	log.Printf("Server has received a bid from client %d with amount %d and Lamport time %d (Lamport time %d)\n",
 		in.ClientId, in.BidAmount, in.LamportTime, p.lamportTime)
 	// If attempted bid is less than or equal to 0, return exception
+	//time.Sleep(5000 * time.Millisecond) // Sleep timer to simulate slow program (to test for sequential consistency)
 	if in.BidAmount <= 0 {
 		log.Printf("Recieved bid was less and/or equal to zero, bad bid: %s.\n", auction.Ack_EXCEPTION.String())
 		return &auction.Ack{
