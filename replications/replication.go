@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"io"
 	"log"
 	"net"
 	"os"
@@ -22,13 +23,14 @@ type Auction struct {
 
 type peer struct {
 	auction.UnimplementedReplicationServer
-	id            int32
-	clients       map[int32]auction.ReplicationClient
-	primaryServer bool
-	lamportTime   int32
-	auction       Auction
-	wg            sync.WaitGroup
-	ctx           context.Context
+	id                int32
+	clients           map[int32]auction.ReplicationClient
+	primaryServer     bool
+	primaryServerPort int32
+	lamportTime       int32
+	auction           Auction
+	wg                sync.WaitGroup
+	ctx               context.Context
 }
 
 func main() {
@@ -38,11 +40,21 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
+	//Prints to log file and terminal
+	f, err := os.OpenFile(fmt.Sprintf("logfile.%d", ownPort), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		log.Fatalf("error opening file: %v", err)
+	}
+	defer f.Close()
+	mw := io.MultiWriter(os.Stdout, f)
+	log.SetOutput(mw)
+
 	p := &peer{
-		id:            ownPort,
-		clients:       make(map[int32]auction.ReplicationClient),
-		primaryServer: false,
-		lamportTime:   1,
+		id:                ownPort,
+		clients:           make(map[int32]auction.ReplicationClient),
+		primaryServer:     false,
+		primaryServerPort: 6000,
+		lamportTime:       1,
 		auction: Auction{
 			state:        auction.Outcome_NOTSTARTED,
 			winnerId:     -1,
@@ -52,9 +64,10 @@ func main() {
 		ctx: ctx,
 	}
 
-	if ownPort == 6000 {
+	if ownPort == p.primaryServerPort {
 		p.primaryServer = true
 	}
+
 	// Create listener tcp on port ownPort
 	list, err := net.Listen("tcp", fmt.Sprintf("localhost:%v", ownPort))
 	if err != nil {
@@ -69,6 +82,7 @@ func main() {
 		}
 	}()
 
+	// Connect to the other replica servers (peers)
 	for i := 0; i < 3; i++ {
 		port := int32(6000) + int32(i)
 		if port == ownPort {
@@ -86,16 +100,21 @@ func main() {
 		p.clients[port] = c
 	}
 
+	// If not a primary server, continiously ping the primary server
 	go func() {
 		for !p.primaryServer {
-			log.Printf("Trying to ping primary server.\n")
-			_, err := p.clients[6000].Ping(ctx, &auction.PingMessage{Id: p.id})
+			log.Printf("Trying to ping primary server. ")
+			_, err := p.clients[p.primaryServerPort].Ping(ctx, &auction.PingMessage{Id: p.id})
+
+			// If no reply, elect new leader
 			if err != nil {
 				log.Printf("The king is dead. Long live the king!\n")
 				p.elect()
+			} else {
+				// Else sleep for 2 seconds
+				log.Printf("Succesfully pinged primary server.\n")
+				time.Sleep(2000 * time.Millisecond)
 			}
-			log.Printf("Succesfully pinged primary server.\n")
-			time.Sleep(2000 * time.Millisecond)
 		}
 	}()
 
@@ -105,19 +124,24 @@ func main() {
 }
 
 func (p *peer) elect() {
-	delete(p.clients, 6000)
+	// Delete old primary port
+	delete(p.clients, p.primaryServerPort)
+
+	// Find the replication server with the lowest id, among all alive replication servers.
 	lowestId := p.id
 	for id, client := range p.clients {
 		reply, err := client.Ping(p.ctx, &auction.PingMessage{Id: p.id})
 		if err != nil {
-			fmt.Println("something went wrong")
+			fmt.Printf("Got no reply from %d\n", id)
 		}
 		fmt.Printf("Got reply from id %v: %v\n", id, reply.Id)
 		if lowestId > reply.Id {
 			lowestId = reply.Id
 		}
 	}
+	// Declare new primary server
 	log.Printf("New king of the hill is %d", lowestId)
+	p.primaryServerPort = lowestId
 	if lowestId == p.id {
 		p.primaryServer = true
 	}
@@ -135,6 +159,12 @@ func (p *peer) IncrementLamportTime(otherLamportTime int32) {
 	}
 }
 
+// Returns to the frontend whether the replication server is the primary server
+func (p *peer) IsPrimaryServer(ctx context.Context, in *auction.Empty) (*auction.PrimaryServerResponse, error) {
+	return &auction.PrimaryServerResponse{PrimaryServer: p.primaryServer}, nil
+}
+
+// Receives ping, and sends back a ping with the servers id
 func (p *peer) Ping(ctx context.Context, in *auction.PingMessage) (*auction.PingMessage, error) {
 	log.Printf("Received a ping!\n")
 	return &auction.PingMessage{
@@ -142,7 +172,9 @@ func (p *peer) Ping(ctx context.Context, in *auction.PingMessage) (*auction.Ping
 	}, nil
 }
 
+// Contains the actual logic for bidding
 func (p *peer) BidBackup(ctx context.Context, in *auction.Amount) (*auction.Ack, error) {
+	// If this is the primary server, it forwards the call to all the backups servers, and waits for reply
 	if p.primaryServer {
 		var wg sync.WaitGroup
 		for id, client := range p.clients {
@@ -151,8 +183,10 @@ func (p *peer) BidBackup(ctx context.Context, in *auction.Amount) (*auction.Ack,
 				defer wg.Done()
 				log.Printf("Sending request to %d", clientId)
 				_, err := requestClient.BidBackup(ctx, in)
+				// If a backup server has crashed, the primary server deletes it from its map of peers
 				if err != nil {
-					fmt.Println("something went wrong")
+					fmt.Printf("Backup server %d is not responding", clientId)
+					delete(p.clients, clientId)
 				}
 			}(id, client)
 		}
@@ -204,7 +238,9 @@ func (p *peer) BidBackup(ctx context.Context, in *auction.Amount) (*auction.Ack,
 	}
 }
 
+// Contains the actual logic for result
 func (p *peer) ResultBackup(ctx context.Context, in *auction.Empty) (*auction.Outcome, error) {
+	// If this is the primary server, it forwards the call to all the backups servers, and waits for reply
 	if p.primaryServer {
 		var wg sync.WaitGroup
 		for id, client := range p.clients {
@@ -213,8 +249,10 @@ func (p *peer) ResultBackup(ctx context.Context, in *auction.Empty) (*auction.Ou
 				defer wg.Done()
 				log.Printf("Sending request to %d", clientId)
 				_, err := requestClient.ResultBackup(ctx, in)
+				// If a backup server has crashed, the primary server deletes it from its map of peers
 				if err != nil {
-					fmt.Println("something went wrong")
+					fmt.Printf("Backup server %d is not responding", clientId)
+					delete(p.clients, clientId)
 				}
 			}(id, client)
 		}
@@ -222,6 +260,7 @@ func (p *peer) ResultBackup(ctx context.Context, in *auction.Empty) (*auction.Ou
 		log.Printf("Received acknowledgements from all backups.\n")
 	}
 
+	// Sends back the state of the action, stored in the auction struct
 	log.Printf("Server received result request.\nSent result reply with outcome %s, winnerId %d and winneramount %d\n",
 		p.auction.state.String(), p.auction.winnerId, p.auction.winnerAmount)
 	return &auction.Outcome{

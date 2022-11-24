@@ -264,3 +264,18 @@ Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69691
 2022/11/23 15:02:05 Started server at port 5000
 2022/11/23 15:20:11 Server is starting
 2022/11/23 15:20:11 Started server at port 5000
+2022/11/23 16:17:35 Server is starting
+2022/11/23 16:17:35 Started server at port 5000
+2022/11/23 16:18:21 Server is starting
+2022/11/23 16:18:21 Started server at port 5000
+2022/11/23 16:19:17 Primary server is not responding.
+2022/11/23 16:19:19 Could not ping 6001
+2022/11/23 16:19:21 Could not ping 6002
+2022/11/23 16:20:06 Server is starting
+2022/11/23 16:20:06 Started server at port 5000
+2022/11/23 16:20:50 Primary server is not responding.
+2022/11/23 16:20:50 The new primary server is 6001
+2022/11/23 16:24:12 Server is starting
+2022/11/23 16:24:12 Started server at port 5000
+2022/11/23 16:24:47 Server is starting
+2022/11/23 16:24:47 Started server at port 5000
