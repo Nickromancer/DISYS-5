@@ -1,537 +1,441 @@
-# Logs
+Logs (the numbers refers to the ports of the nodes. Refer to the readme.md for explanation.)
 
 
 ./logfile.5000
-2022/11/16 16:12:15 Server is starting
-2022/11/16 16:12:15 Started server at port 5000
-2022/11/23 12:12:49 Server is starting
-2022/11/23 12:12:50 Started server at port 5000
-2022/11/23 12:37:59 Server is starting
-2022/11/23 12:37:59 Started server at port 5000
-2022/11/23 12:38:22 Server received result request.
-Sent result reply with outcome NOTSTARTED, winnerId -1 and winneramount -1
-2022/11/23 12:38:37 Server has received a bid from client 5001 with amount 100 and Lamport time 1 (Lamport time 1)
-2022/11/23 12:38:37 Start new auction with starting bid 100 and winnerId 5001.
-2022/11/23 12:38:37 Auction has started! Let the bidding begin!
-2022/11/23 12:38:42 Auction is done!
-2022/11/23 12:38:49 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5001 and winneramount 100
-2022/11/23 12:39:19 Server is starting
-2022/11/23 12:39:19 Started server at port 5000
-2022/11/23 12:40:28 Server has received a bid from client 5001 with amount 100 and Lamport time 1 (Lamport time 1)
-2022/11/23 12:40:28 Start new auction with starting bid 100 and winnerId 5001.
-2022/11/23 12:40:28 Auction has started! Let the bidding begin!
-2022/11/23 12:40:32 Server has received a bid from client 5002 with amount 10 and Lamport time 1 (Lamport time 2)
-2022/11/23 12:40:32 You have to bid higher than the previous bidder, you donut.
-2022/11/23 12:40:38 Auction is done!
-2022/11/23 12:46:12 Server is starting
-2022/11/23 12:46:12 Started server at port 5000
-2022/11/23 12:46:19 Server has received a bid from client 5001 with amount 100 and Lamport time 1 (Lamport time 1)
-2022/11/23 12:46:19 Start new auction with starting bid 100 and winnerId 5001.
-2022/11/23 12:46:19 Auction has started! Let the bidding begin!
-2022/11/23 12:46:25 Server has received a bid from client 5002 with amount 110 and Lamport time 1 (Lamport time 2)
-2022/11/23 12:46:25 New bid 110 from client 5002 is highest bid.
-2022/11/23 12:46:25 Extending auction.
-2022/11/23 12:46:25 Auction has been extended by 5 seconds!
-2022/11/23 12:46:29 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5002 and winneramount 110
-2022/11/23 12:46:30 Auction extension is done!
-2022/11/23 12:46:30 Auction is done!
-2022/11/23 12:47:11 Server has received a bid from client 5001 with amount 100 and Lamport time 1 (Lamport time 3)
-2022/11/23 12:47:11 Start new auction with starting bid 100 and winnerId 5001.
-2022/11/23 12:47:11 Auction has started! Let the bidding begin!
-2022/11/23 12:47:15 Server has received a bid from client 5002 with amount 1000 and Lamport time 1 (Lamport time 4)
-2022/11/23 12:47:15 New bid 1000 from client 5002 is highest bid.
-2022/11/23 12:47:15 Extending auction.
-2022/11/23 12:47:15 Auction has been extended by 5 seconds!
-2022/11/23 12:47:17 Server has received a bid from client 5002 with amount 10000 and Lamport time 1 (Lamport time 5)
-2022/11/23 12:47:17 New bid 10000 from client 5002 is highest bid.
-2022/11/23 12:47:17 Extending auction.
-2022/11/23 12:47:17 Auction has been extended by 5 seconds!
-2022/11/23 12:47:20 Auction extension is done!
-2022/11/23 12:47:21 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5002 and winneramount 10000
-2022/11/23 12:47:22 Auction extension is done!
-2022/11/23 12:47:22 Auction is done!
-2022/11/23 12:47:30 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5002 and winneramount 10000
-2022/11/23 12:59:50 Server is starting
-2022/11/23 12:59:50 Started server at port 5000
-2022/11/23 13:00:54 Server has received a bid from client 5001 with amount 100 and Lamport time 1 (Lamport time 1)
-2022/11/23 13:00:54 Start new auction with starting bid 100 and winnerId 5001.
-2022/11/23 13:00:54 Auction has started! Let the bidding begin!
-2022/11/23 13:01:04 Auction is done!
-2022/11/23 13:05:38 Server has received a bid from client 5001 with amount 1000 and Lamport time 1 (Lamport time 2)
-2022/11/23 13:05:38 Start new auction with starting bid 1000 and winnerId 5001.
-2022/11/23 13:05:38 Auction has started! Let the bidding begin!
-2022/11/23 13:05:48 Auction is done!
-2022/11/23 13:07:48 Server is starting
-2022/11/23 13:07:48 Started server at port 5000
-2022/11/23 13:08:01 Server received result request.
-Sent result reply with outcome NOTSTARTED, winnerId -1 and winneramount -1
-2022/11/23 13:12:36 Server is starting
-2022/11/23 13:12:36 Started server at port 5000
-2022/11/23 13:12:43 Server received result request.
-Sent result reply with outcome NOTSTARTED, winnerId -1 and winneramount -1
-2022/11/23 13:13:06 Server has received a bid from client 5069 with amount 100 and Lamport time 1 (Lamport time 1)
-2022/11/23 13:13:06 Start new auction with starting bid 100 and winnerId 5069.
-2022/11/23 13:13:06 Auction has started! Let the bidding begin!
-2022/11/23 13:13:13 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5069 and winneramount 100
-2022/11/23 13:13:15 Server has received a bid from client 5001 with amount 200 and Lamport time 1 (Lamport time 2)
-2022/11/23 13:13:15 New bid 200 from client 5001 is highest bid.
-2022/11/23 13:13:15 Extending auction.
-2022/11/23 13:13:15 Server has received a bid from client 5069 with amount 6969 and Lamport time 1 (Lamport time 3)
-2022/11/23 13:13:15 New bid 6969 from client 5069 is highest bid.
-2022/11/23 13:13:15 Extending auction.
-2022/11/23 13:13:20 Auction is done!
-2022/11/23 13:13:23 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 6969
-2022/11/23 13:14:24 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 6969
-2022/11/23 13:17:02 Server has received a bid from client 5069 with amount 1 and Lamport time 1 (Lamport time 4)
-2022/11/23 13:17:02 Start new auction with starting bid 1 and winnerId 5069.
-2022/11/23 13:17:02 Auction has started! Let the bidding begin!
-2022/11/23 13:17:04 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5069 and winneramount 1
-2022/11/23 13:17:08 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5069 and winneramount 1
-2022/11/23 13:17:11 Server has received a bid from client 5001 with amount 10000 and Lamport time 1 (Lamport time 5)
-2022/11/23 13:17:11 New bid 10000 from client 5001 is highest bid.
-2022/11/23 13:17:11 Extending auction.
-2022/11/23 13:17:13 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5001 and winneramount 10000
-2022/11/23 13:17:14 Server has received a bid from client 5001 with amount -1 and Lamport time 1 (Lamport time 6)
-2022/11/23 13:17:14 Recieved bid was less and/or equal to zero, bad bid: EXCEPTION.
-2022/11/23 13:17:14 Server has received a bid from client 5420 with amount 1000000 and Lamport time 1 (Lamport time 7)
-2022/11/23 13:17:14 New bid 1000000 from client 5420 is highest bid.
-2022/11/23 13:17:14 Extending auction.
-2022/11/23 13:17:14 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5420 and winneramount 1000000
-2022/11/23 13:17:19 Server has received a bid from client 5069 with amount 1316134912 and Lamport time 1 (Lamport time 8)
-2022/11/23 13:17:19 New bid 1316134912 from client 5069 is highest bid.
-2022/11/23 13:17:19 Extending auction.
-2022/11/23 13:17:21 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5069 and winneramount 1316134912
-2022/11/23 13:17:21 Server has received a bid from client 5420 with amount 1000001 and Lamport time 1 (Lamport time 9)
-2022/11/23 13:17:21 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:17:24 Auction is done!
-2022/11/23 13:17:27 Server has received a bid from client 5069 with amount -1 and Lamport time 1 (Lamport time 10)
-2022/11/23 13:17:27 Recieved bid was less and/or equal to zero, bad bid: EXCEPTION.
-2022/11/23 13:17:51 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 1316134912
-2022/11/23 13:19:01 Server has received a bid from client 5420 with amount 69 and Lamport time 1 (Lamport time 11)
-2022/11/23 13:19:01 Start new auction with starting bid 69 and winnerId 5420.
-2022/11/23 13:19:01 Auction has started! Let the bidding begin!
-2022/11/23 13:19:05 Server has received a bid from client 5001 with amount 10000 and Lamport time 1 (Lamport time 12)
-2022/11/23 13:19:05 New bid 10000 from client 5001 is highest bid.
-2022/11/23 13:19:05 Extending auction.
-2022/11/23 13:19:06 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5001 and winneramount 10000
-2022/11/23 13:19:07 Server has received a bid from client 5420 with amount 3533 and Lamport time 1 (Lamport time 13)
-2022/11/23 13:19:07 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:19:10 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5001 and winneramount 10000
-2022/11/23 13:19:11 Auction is done!
-2022/11/23 13:19:12 Server has received a bid from client 5420 with amount 100049 and Lamport time 1 (Lamport time 14)
-2022/11/23 13:19:12 Start new auction with starting bid 100049 and winnerId 5420.
-2022/11/23 13:19:12 Auction has started! Let the bidding begin!
-2022/11/23 13:19:13 Server has received a bid from client 5069 with amount 10001 and Lamport time 1 (Lamport time 15)
-2022/11/23 13:19:13 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:19:17 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5420 and winneramount 100049
-2022/11/23 13:19:19 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5420 and winneramount 100049
-2022/11/23 13:19:20 Server has received a bid from client 5069 with amount 1 and Lamport time 1 (Lamport time 16)
-2022/11/23 13:19:20 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:19:22 Server has received a bid from client 5420 with amount 39499 and Lamport time 1 (Lamport time 17)
-2022/11/23 13:19:22 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:19:22 Server has received a bid from client 5069 with amount 1 and Lamport time 1 (Lamport time 18)
-2022/11/23 13:19:22 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:19:22 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5420 and winneramount 100049
-2022/11/23 13:19:22 Auction is done!
-2022/11/23 13:19:22 Server has received a bid from client 5069 with amount 1 and Lamport time 1 (Lamport time 19)
-2022/11/23 13:19:22 Start new auction with starting bid 1 and winnerId 5069.
-2022/11/23 13:19:22 Auction has started! Let the bidding begin!
-2022/11/23 13:19:23 Server has received a bid from client 5069 with amount 1 and Lamport time 1 (Lamport time 20)
-2022/11/23 13:19:23 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:19:24 Server has received a bid from client 5069 with amount 1 and Lamport time 1 (Lamport time 21)
-2022/11/23 13:19:24 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:19:24 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5069 and winneramount 1
-2022/11/23 13:19:24 Server has received a bid from client 5069 with amount 1 and Lamport time 1 (Lamport time 22)
-2022/11/23 13:19:24 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:19:25 Server has received a bid from client 5069 with amount 1 and Lamport time 1 (Lamport time 23)
-2022/11/23 13:19:25 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:19:26 Server has received a bid from client 5001 with amount 10000000 and Lamport time 1 (Lamport time 24)
-2022/11/23 13:19:26 New bid 10000000 from client 5001 is highest bid.
-2022/11/23 13:19:26 Extending auction.
-2022/11/23 13:19:28 Server has received a bid from client 5069 with amount -1 and Lamport time 1 (Lamport time 25)
-2022/11/23 13:19:28 Recieved bid was less and/or equal to zero, bad bid: EXCEPTION.
-2022/11/23 13:19:32 Auction is done!
-2022/11/23 13:19:38 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5001 and winneramount 10000000
-2022/11/23 13:19:54 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5001 and winneramount 10000000
-2022/11/23 13:25:01 Server is starting
-2022/11/23 13:25:01 Started server at port 5000
-2022/11/23 13:25:13 Server has received a bid from client 5001 with amount 10 and Lamport time 2 (Lamport time 1)
-2022/11/23 13:25:13 Start new auction with starting bid 10 and winnerId 5001.
-2022/11/23 13:25:13 Auction has started! Let the bidding begin!
-2022/11/23 13:25:22 Server has received a bid from client 5069 with amount 69 and Lamport time 2 (Lamport time 3)
-2022/11/23 13:25:22 New bid 69 from client 5069 is highest bid.
-2022/11/23 13:25:22 Extending auction.
-2022/11/23 13:25:27 Auction is done!
-2022/11/23 13:25:28 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69
-2022/11/23 13:25:31 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69
-2022/11/23 13:25:31 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69
-2022/11/23 13:25:32 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69
-2022/11/23 13:25:33 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69
-2022/11/23 13:25:37 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69
-2022/11/23 13:25:38 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69
-2022/11/23 13:25:39 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69
-2022/11/23 13:25:39 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69
-2022/11/23 13:25:40 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69
-2022/11/23 13:25:40 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69
-2022/11/23 13:25:40 Server has received a bid from client 5001 with amount 10 and Lamport time 5 (Lamport time 4)
-2022/11/23 13:25:40 Start new auction with starting bid 10 and winnerId 5001.
-2022/11/23 13:25:40 Auction has started! Let the bidding begin!
-2022/11/23 13:25:41 Server has received a bid from client 5001 with amount 10 and Lamport time 8 (Lamport time 6)
-2022/11/23 13:25:41 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:41 Server has received a bid from client 5001 with amount 10 and Lamport time 11 (Lamport time 9)
-2022/11/23 13:25:41 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:41 Server has received a bid from client 5001 with amount 10 and Lamport time 14 (Lamport time 12)
-2022/11/23 13:25:41 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:41 Server has received a bid from client 5001 with amount 10 and Lamport time 17 (Lamport time 15)
-2022/11/23 13:25:41 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:42 Server has received a bid from client 5001 with amount 10 and Lamport time 20 (Lamport time 18)
-2022/11/23 13:25:42 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:42 Server has received a bid from client 5001 with amount 10 and Lamport time 23 (Lamport time 21)
-2022/11/23 13:25:42 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:42 Server has received a bid from client 5001 with amount 10 and Lamport time 26 (Lamport time 24)
-2022/11/23 13:25:42 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:43 Server has received a bid from client 5001 with amount 10 and Lamport time 29 (Lamport time 27)
-2022/11/23 13:25:43 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:43 Server has received a bid from client 5001 with amount 10 and Lamport time 32 (Lamport time 30)
-2022/11/23 13:25:43 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:43 Server has received a bid from client 5001 with amount 10 and Lamport time 35 (Lamport time 33)
-2022/11/23 13:25:43 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:44 Server has received a bid from client 5001 with amount 10 and Lamport time 38 (Lamport time 36)
-2022/11/23 13:25:44 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:44 Server has received a bid from client 5001 with amount 10 and Lamport time 41 (Lamport time 39)
-2022/11/23 13:25:44 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:44 Server has received a bid from client 5001 with amount 10 and Lamport time 44 (Lamport time 42)
-2022/11/23 13:25:44 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:46 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5001 and winneramount 10
-2022/11/23 13:25:47 Server has received a bid from client 5069 with amount 69 and Lamport time 6 (Lamport time 45)
-2022/11/23 13:25:47 New bid 69 from client 5069 is highest bid.
-2022/11/23 13:25:47 Extending auction.
-2022/11/23 13:25:48 Server has received a bid from client 5069 with amount 69 and Lamport time 48 (Lamport time 46)
-2022/11/23 13:25:48 You have to bid higher than the previous bidder, you donut.
-2022/11/23 13:25:52 Auction is done!
-2022/11/23 13:25:55 Server has received a bid from client 5069 with amount 6969 and Lamport time 51 (Lamport time 49)
-2022/11/23 13:25:55 Start new auction with starting bid 6969 and winnerId 5069.
-2022/11/23 13:25:55 Auction has started! Let the bidding begin!
-2022/11/23 13:25:59 Server received result request.
-Sent result reply with outcome ONGOING, winnerId 5069 and winneramount 6969
-2022/11/23 13:26:03 Server has received a bid from client 5069 with amount 69691 and Lamport time 54 (Lamport time 52)
-2022/11/23 13:26:03 New bid 69691 from client 5069 is highest bid.
-2022/11/23 13:26:03 Extending auction.
-2022/11/23 13:26:08 Auction is done!
-2022/11/23 13:26:09 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69691
-2022/11/23 13:26:18 Server received result request.
-Sent result reply with outcome FINISHED, winnerId 5069 and winneramount 69691
-2022/11/23 13:26:27 Server has received a bid from client 5001 with amount 10 and Lamport time 47 (Lamport time 55)
-2022/11/23 13:26:27 Start new auction with starting bid 10 and winnerId 5001.
-2022/11/23 13:26:27 Auction has started! Let the bidding begin!
-2022/11/23 13:26:28 Server has received a bid from client 5069 with amount 6969 and Lamport time 57 (Lamport time 56)
-2022/11/23 13:26:28 New bid 6969 from client 5069 is highest bid.
-2022/11/23 13:26:28 Extending auction.
-2022/11/23 13:26:37 Auction is done!
-2022/11/23 15:01:35 Server is starting
-2022/11/23 15:01:35 Could not create the server listen tcp 192.168.26.195:5000: bind: The requested address is not valid in its context.
-2022/11/23 15:02:05 Server is starting
-2022/11/23 15:02:05 Started server at port 5000
-2022/11/23 15:20:11 Server is starting
-2022/11/23 15:20:11 Started server at port 5000
-2022/11/23 16:17:35 Server is starting
-2022/11/23 16:17:35 Started server at port 5000
-2022/11/23 16:18:21 Server is starting
-2022/11/23 16:18:21 Started server at port 5000
-2022/11/23 16:19:17 Primary server is not responding.
-2022/11/23 16:19:19 Could not ping 6001
-2022/11/23 16:19:21 Could not ping 6002
-2022/11/23 16:20:06 Server is starting
-2022/11/23 16:20:06 Started server at port 5000
-2022/11/23 16:20:50 Primary server is not responding.
-2022/11/23 16:20:50 The new primary server is 6001
-2022/11/23 16:24:12 Server is starting
-2022/11/23 16:24:12 Started server at port 5000
-2022/11/23 16:24:47 Server is starting
-2022/11/23 16:24:47 Started server at port 5000
+2022/11/24 15:36:59 Server is starting
+2022/11/24 15:36:59 Started server at port 5000
+2022/11/24 15:38:57 Primary server is not responding.
+2022/11/24 15:38:57 The new primary server is 6001
 
 
 ./logfile.5001
-2022/11/16 16:12:39 Connected to server port 5000
-2022/11/16 16:13:15 Connected to server port 5000
-2022/11/16 16:13:57 Connected to server port 5000
-2022/11/23 12:12:57 Connected to server port 5000
-2022/11/23 12:13:40 Connected to server port 5000
-2022/11/23 12:38:05 Connected to server port 5000
-2022/11/23 12:38:22 The auction is currently NOTSTARTED.
-The current winning client: -1 with bid: -1
-2022/11/23 12:38:37 Client 5001 sent a bid with amount: 100 (Lamport time 1)
-2022/11/23 12:38:37 Client 5001 received ack with result SUCCESS and Lamport time 2 (Client Lamport time 1)
-2022/11/23 12:39:21 Connected to server port 5000
-2022/11/23 12:40:28 Client 5001 sent a bid with amount: 100 (Lamport time 1)
-2022/11/23 12:40:28 Client 5001 received ack with result SUCCESS and Lamport time 2 (Client Lamport time 1)
-2022/11/23 12:46:14 Connected to server port 5000
-2022/11/23 12:46:19 Client 5001 sent a bid with amount: 100 (Lamport time 1)
-2022/11/23 12:46:19 Client 5001 received ack with result SUCCESS and Lamport time 2 (Client Lamport time 1)
-2022/11/23 12:47:11 Client 5001 sent a bid with amount: 100 (Lamport time 1)
-2022/11/23 12:47:11 Client 5001 received ack with result SUCCESS and Lamport time 4 (Client Lamport time 1)
-2022/11/23 12:47:21 The auction is currently ONGOING.
-The current winning client: 5002 with bid: 10000
-2022/11/23 13:00:02 Connected to server port 5000
-2022/11/23 13:00:54 Client 5001 sent a bid with amount: 100 (Lamport time 1)
-2022/11/23 13:00:54 Client 5001 received ack with result SUCCESS and Lamport time 2 (Client Lamport time 1)
-2022/11/23 13:05:38 Client 5001 sent a bid with amount: 1000 (Lamport time 1)
-2022/11/23 13:05:38 Client 5001 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 1)
-2022/11/23 13:07:59 Connected to server port 5000
-2022/11/23 13:08:01 The auction is currently NOTSTARTED.
-The current winning client: -1 with bid: -1
-2022/11/23 13:12:38 Connected to server port 5000
-2022/11/23 13:12:43 The auction is currently NOTSTARTED.
-The current winning client: -1 with bid: -1
-2022/11/23 13:13:13 The auction is currently ONGOING.
-The current winning client: 5069 with bid: 100
-2022/11/23 13:13:15 Client 5001 sent a bid with amount: 200 (Lamport time 1)
-2022/11/23 13:13:15 Client 5001 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 1)
-2022/11/23 13:14:24 The auction is currently FINISHED.
-The current winning client: 5069 with bid: 6969
-2022/11/23 13:17:11 Client 5001 sent a bid with amount: 10000 (Lamport time 1)
-2022/11/23 13:17:11 Client 5001 received ack with result SUCCESS and Lamport time 6 (Client Lamport time 1)
-2022/11/23 13:17:14 Client 5001 sent a bid with amount: -1 (Lamport time 1)
-2022/11/23 13:17:14 Client 5001 received ack with result EXCEPTION and Lamport time 7 (Client Lamport time 1)
-2022/11/23 13:17:21 The auction is currently ONGOING.
-The current winning client: 5069 with bid: 1316134912
-2022/11/23 13:19:05 Client 5001 sent a bid with amount: 10000 (Lamport time 1)
-2022/11/23 13:19:05 Client 5001 received ack with result SUCCESS and Lamport time 13 (Client Lamport time 1)
-2022/11/23 13:19:10 The auction is currently ONGOING.
-The current winning client: 5001 with bid: 10000
-2022/11/23 13:19:19 The auction is currently ONGOING.
-The current winning client: 5420 with bid: 100049
-2022/11/23 13:19:22 The auction is currently ONGOING.
-The current winning client: 5420 with bid: 100049
-2022/11/23 13:19:26 Client 5001 sent a bid with amount: 10000000 (Lamport time 1)
-2022/11/23 13:19:26 Client 5001 received ack with result SUCCESS and Lamport time 25 (Client Lamport time 1)
-2022/11/23 13:19:38 The auction is currently FINISHED.
-The current winning client: 5001 with bid: 10000000
-2022/11/23 13:25:10 Connected to server port 5000
-2022/11/23 13:25:13 Client 5001 sent a bid with amount: 10 (Lamport time 2)
-2022/11/23 13:25:13 Client 5001 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 4)
-2022/11/23 13:25:37 The auction is currently FINISHED.
-The current winning client: 5069 with bid: 69
-2022/11/23 13:25:38 The auction is currently FINISHED.
-The current winning client: 5069 with bid: 69
-2022/11/23 13:25:39 The auction is currently FINISHED.
-The current winning client: 5069 with bid: 69
-2022/11/23 13:25:39 The auction is currently FINISHED.
-The current winning client: 5069 with bid: 69
-2022/11/23 13:25:40 The auction is currently FINISHED.
-The current winning client: 5069 with bid: 69
-2022/11/23 13:25:40 The auction is currently FINISHED.
-The current winning client: 5069 with bid: 69
-2022/11/23 13:25:40 Client 5001 sent a bid with amount: 10 (Lamport time 5)
-2022/11/23 13:25:40 Client 5001 received ack with result SUCCESS and Lamport time 6 (Client Lamport time 7)
-2022/11/23 13:25:41 Client 5001 sent a bid with amount: 10 (Lamport time 8)
-2022/11/23 13:25:41 Client 5001 received ack with result FAIL and Lamport time 9 (Client Lamport time 10)
-2022/11/23 13:25:41 Client 5001 sent a bid with amount: 10 (Lamport time 11)
-2022/11/23 13:25:41 Client 5001 received ack with result FAIL and Lamport time 12 (Client Lamport time 13)
-2022/11/23 13:25:41 Client 5001 sent a bid with amount: 10 (Lamport time 14)
-2022/11/23 13:25:41 Client 5001 received ack with result FAIL and Lamport time 15 (Client Lamport time 16)
-2022/11/23 13:25:41 Client 5001 sent a bid with amount: 10 (Lamport time 17)
-2022/11/23 13:25:41 Client 5001 received ack with result FAIL and Lamport time 18 (Client Lamport time 19)
-2022/11/23 13:25:42 Client 5001 sent a bid with amount: 10 (Lamport time 20)
-2022/11/23 13:25:42 Client 5001 received ack with result FAIL and Lamport time 21 (Client Lamport time 22)
-2022/11/23 13:25:42 Client 5001 sent a bid with amount: 10 (Lamport time 23)
-2022/11/23 13:25:42 Client 5001 received ack with result FAIL and Lamport time 24 (Client Lamport time 25)
-2022/11/23 13:25:42 Client 5001 sent a bid with amount: 10 (Lamport time 26)
-2022/11/23 13:25:42 Client 5001 received ack with result FAIL and Lamport time 27 (Client Lamport time 28)
-2022/11/23 13:25:43 Client 5001 sent a bid with amount: 10 (Lamport time 29)
-2022/11/23 13:25:43 Client 5001 received ack with result FAIL and Lamport time 30 (Client Lamport time 31)
-2022/11/23 13:25:43 Client 5001 sent a bid with amount: 10 (Lamport time 32)
-2022/11/23 13:25:43 Client 5001 received ack with result FAIL and Lamport time 33 (Client Lamport time 34)
-2022/11/23 13:25:43 Client 5001 sent a bid with amount: 10 (Lamport time 35)
-2022/11/23 13:25:43 Client 5001 received ack with result FAIL and Lamport time 36 (Client Lamport time 37)
-2022/11/23 13:25:44 Client 5001 sent a bid with amount: 10 (Lamport time 38)
-2022/11/23 13:25:44 Client 5001 received ack with result FAIL and Lamport time 39 (Client Lamport time 40)
-2022/11/23 13:25:44 Client 5001 sent a bid with amount: 10 (Lamport time 41)
-2022/11/23 13:25:44 Client 5001 received ack with result FAIL and Lamport time 42 (Client Lamport time 43)
-2022/11/23 13:25:44 Client 5001 sent a bid with amount: 10 (Lamport time 44)
-2022/11/23 13:25:44 Client 5001 received ack with result FAIL and Lamport time 45 (Client Lamport time 46)
-2022/11/23 13:26:27 Client 5001 sent a bid with amount: 10 (Lamport time 47)
-2022/11/23 13:26:27 Client 5001 received ack with result SUCCESS and Lamport time 56 (Client Lamport time 57)
-2022/11/23 15:02:19 Connected to server port 5000
-2022/11/23 15:02:49 The auction is currently FINISHED.
-The current winning client: 5002 with bid: 10
-2022/11/23 15:02:57 Client 5001 sent a bid with amount: 100 (Lamport time 2)
-2022/11/23 15:02:57 Client 5001 received ack with result SUCCESS and Lamport time 4 (Client Lamport time 5)
-2022/11/23 15:20:22 Connected to server port 5000
-2022/11/23 15:20:48 Client 5001 sent a bid with amount: 10 (Lamport time 2)
-2022/11/23 15:20:48 Client 5001 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 4)
-2022/11/23 15:21:01 The auction is currently FINISHED.
-The current winning client: 5002 with bid: 2000
-2022/11/23 16:18:34 Connected to server port 5000
-2022/11/23 16:18:52 Client 5001 sent a bid with amount: 10 (Lamport time 2)
-2022/11/23 16:18:52 Client 5001 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 4)
-2022/11/23 16:19:14 Client 5001 sent a bid with amount: 100 (Lamport time 5)
-2022/11/23 16:19:21 Could not send a bid to the server.
-2022/11/23 16:20:09 Connected to server port 5000
-2022/11/23 16:20:20 Client 5001 sent a bid with amount: 100 (Lamport time 2)
-2022/11/23 16:20:20 Client 5001 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 4)
-2022/11/23 16:20:48 Client 5001 sent a bid with amount: 100 (Lamport time 5)
-2022/11/23 16:20:50 Client 5001 received ack with result SUCCESS and Lamport time 6 (Client Lamport time 7)
-2022/11/23 16:24:14 Connected to server port 5000
-2022/11/23 16:24:50 Connected to server port 5000
-2022/11/23 16:25:11 Client 5001 sent a bid with amount: 10 (Lamport time 2)
-2022/11/23 16:25:11 Client 5001 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 4)
-2022/11/23 16:25:49 Client 5001 sent a bid with amount: 100 (Lamport time 5)
-2022/11/23 16:25:49 Client 5001 received ack with result SUCCESS and Lamport time 6 (Client Lamport time 7)
+2022/11/24 15:37:21 Connected to server port 5000
+2022/11/24 15:38:03 Connected to server port 5000
+2022/11/24 15:38:07 Client 5001 sent a bid with amount: 100 (Lamport time 2)
+2022/11/24 15:38:07 Client 5001 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 4)
+2022/11/24 15:38:11 Client 5001 sent a bid with amount: 2000 (Lamport time 5)
+2022/11/24 15:38:11 Client 5001 received ack with result SUCCESS and Lamport time 6 (Client Lamport time 7)
+2022/11/24 15:38:13 The auction is currently ONGOING.
+The current winning client: 5001 with bid: 2000
 
 
 ./logfile.5002
-2022/11/16 16:12:51 Connected to server port 5000
-2022/11/16 16:13:59 Connected to server port 5000
-2022/11/23 12:13:06 Connected to server port 5000
-2022/11/23 12:38:08 Connected to server port 5000
-2022/11/23 12:38:49 The auction is currently FINISHED.
-The current winning client: 5001 with bid: 100
-2022/11/23 12:39:23 Connected to server port 5000
-2022/11/23 12:40:32 Client 5002 sent a bid with amount: 10 (Lamport time 1)
-2022/11/23 12:40:32 Client 5002 received ack with result FAIL and Lamport time 3 (Client Lamport time 1)
-2022/11/23 12:46:15 Connected to server port 5000
-2022/11/23 12:46:25 Client 5002 sent a bid with amount: 110 (Lamport time 1)
-2022/11/23 12:46:25 Client 5002 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 1)
-2022/11/23 12:46:29 The auction is currently ONGOING.
-The current winning client: 5002 with bid: 110
-2022/11/23 12:47:15 Client 5002 sent a bid with amount: 1000 (Lamport time 1)
-2022/11/23 12:47:15 Client 5002 received ack with result SUCCESS and Lamport time 5 (Client Lamport time 1)
-2022/11/23 12:47:17 Client 5002 sent a bid with amount: 10000 (Lamport time 1)
-2022/11/23 12:47:17 Client 5002 received ack with result SUCCESS and Lamport time 6 (Client Lamport time 1)
-2022/11/23 12:47:30 The auction is currently FINISHED.
-The current winning client: 5002 with bid: 10000
-2022/11/23 15:02:26 Connected to server port 5000
-2022/11/23 15:02:32 Client 5002 sent a bid with amount: 10 (Lamport time 2)
-2022/11/23 15:02:32 Client 5002 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 4)
-2022/11/23 15:02:40 The auction is currently ONGOING.
-The current winning client: 5002 with bid: 10
-2022/11/23 15:20:32 Connected to server port 5000
-2022/11/23 15:20:54 Client 5002 sent a bid with amount: 2000 (Lamport time 2)
-2022/11/23 15:20:54 Client 5002 received ack with result SUCCESS and Lamport time 4 (Client Lamport time 5)
-2022/11/23 16:18:44 Connected to server port 5000
-2022/11/23 16:20:12 Connected to server port 5000
-2022/11/23 16:24:17 Connected to server port 5000
-2022/11/23 16:24:20 The auction is currently NOTSTARTED.
-The current winning client: -1 with bid: -1
-2022/11/23 16:24:24 Client 5002 sent a bid with amount: 10 (Lamport time 2)
-2022/11/23 16:24:24 Client 5002 received ack with result SUCCESS and Lamport time 3 (Client Lamport time 4)
-2022/11/23 16:24:52 Connected to server port 5000
-2022/11/23 16:25:20 The auction is currently ONGOING.
-The current winning client: 5001 with bid: 10
+2022/11/24 15:37:32 Connected to server port 5000
+2022/11/24 15:38:57 The auction is currently FINISHED.
+The current winning client: 5001 with bid: 2000
 
 
 ./logfile.6000
-2022/11/24 14:45:02 Received a ping!
-2022/11/24 14:45:03 Received a ping!
-2022/11/24 14:45:04 Received a ping!
-2022/11/24 14:45:05 Received a ping!
-2022/11/24 14:45:06 Received a ping!
-2022/11/24 14:45:07 Received a ping!
-2022/11/24 14:45:08 Received a ping!
-2022/11/24 14:45:09 Received a ping!
-2022/11/24 14:45:10 Received a ping!
-2022/11/24 14:45:11 Received a ping!
-2022/11/24 14:45:12 Received a ping!
-2022/11/24 14:45:13 Received a ping!
-2022/11/24 14:45:14 Received a ping!
-2022/11/24 14:45:15 Received a ping!
-2022/11/24 14:45:16 Received a ping!
-2022/11/24 14:45:17 Received a ping!
-2022/11/24 14:45:18 Received a ping!
-2022/11/24 14:45:19 Received a ping!
-2022/11/24 14:45:20 Received a ping!
-2022/11/24 14:45:21 Received a ping!
-2022/11/24 14:45:23 Received a ping!
-2022/11/24 14:45:23 Received a ping!
-2022/11/24 14:45:25 Received a ping!
-2022/11/24 14:45:25 Received a ping!
+2022/11/24 15:36:48 Received a ping!
+2022/11/24 15:36:49 Received a ping!
+2022/11/24 15:36:50 Received a ping!
+2022/11/24 15:36:51 Received a ping!
+2022/11/24 15:36:52 Received a ping!
+2022/11/24 15:36:53 Received a ping!
+2022/11/24 15:36:54 Received a ping!
+2022/11/24 15:36:55 Received a ping!
+2022/11/24 15:36:56 Received a ping!
+2022/11/24 15:36:57 Received a ping!
+2022/11/24 15:36:58 Received a ping!
+2022/11/24 15:36:59 Received a ping!
+2022/11/24 15:37:00 Received a ping!
+2022/11/24 15:37:01 Received a ping!
+2022/11/24 15:37:02 Received a ping!
+2022/11/24 15:37:03 Received a ping!
+2022/11/24 15:37:04 Received a ping!
+2022/11/24 15:37:05 Received a ping!
+2022/11/24 15:37:06 Received a ping!
+2022/11/24 15:37:07 Received a ping!
+2022/11/24 15:37:08 Received a ping!
+2022/11/24 15:37:09 Received a ping!
+2022/11/24 15:37:10 Received a ping!
+2022/11/24 15:37:11 Received a ping!
+2022/11/24 15:37:12 Received a ping!
+2022/11/24 15:37:13 Received a ping!
+2022/11/24 15:37:14 Received a ping!
+2022/11/24 15:37:15 Received a ping!
+2022/11/24 15:37:16 Received a ping!
+2022/11/24 15:37:17 Received a ping!
+2022/11/24 15:37:18 Received a ping!
+2022/11/24 15:37:19 Received a ping!
+2022/11/24 15:37:20 Received a ping!
+2022/11/24 15:37:21 Received a ping!
+2022/11/24 15:37:22 Received a ping!
+2022/11/24 15:37:23 Received a ping!
+2022/11/24 15:37:24 Received a ping!
+2022/11/24 15:37:25 Received a ping!
+2022/11/24 15:37:26 Received a ping!
+2022/11/24 15:37:27 Received a ping!
+2022/11/24 15:37:28 Received a ping!
+2022/11/24 15:37:29 Received a ping!
+2022/11/24 15:37:30 Received a ping!
+2022/11/24 15:37:31 Received a ping!
+2022/11/24 15:37:32 Received a ping!
+2022/11/24 15:37:33 Received a ping!
+2022/11/24 15:37:34 Received a ping!
+2022/11/24 15:37:35 Received a ping!
+2022/11/24 15:37:36 Received a ping!
+2022/11/24 15:37:37 Received a ping!
+2022/11/24 15:37:38 Received a ping!
+2022/11/24 15:37:39 Received a ping!
+2022/11/24 15:37:41 Received a ping!
+2022/11/24 15:37:41 Received a ping!
+2022/11/24 15:37:43 Received a ping!
+2022/11/24 15:37:43 Received a ping!
+2022/11/24 15:37:45 Received a ping!
+2022/11/24 15:37:45 Received a ping!
+2022/11/24 15:37:47 Received a ping!
+2022/11/24 15:37:47 Received a ping!
+2022/11/24 15:37:49 Received a ping!
+2022/11/24 15:37:49 Received a ping!
+2022/11/24 15:37:51 Received a ping!
+2022/11/24 15:37:51 Received a ping!
+2022/11/24 15:37:53 Received a ping!
+2022/11/24 15:37:53 Received a ping!
+2022/11/24 15:37:55 Received a ping!
+2022/11/24 15:37:55 Received a ping!
+2022/11/24 15:37:57 Received a ping!
+2022/11/24 15:37:57 Received a ping!
+2022/11/24 15:37:59 Received a ping!
+2022/11/24 15:37:59 Received a ping!
+2022/11/24 15:38:01 Received a ping!
+2022/11/24 15:38:01 Received a ping!
+2022/11/24 15:38:03 Received a ping!
+2022/11/24 15:38:03 Received a ping!
+2022/11/24 15:38:05 Received a ping!
+2022/11/24 15:38:05 Received a ping!
+2022/11/24 15:38:07 Received a ping!
+2022/11/24 15:38:07 Received a ping!
+2022/11/24 15:38:07 Sending request to 6002
+2022/11/24 15:38:07 Sending request to 6001
+2022/11/24 15:38:07 Received acknowledgements from all backups.
+2022/11/24 15:38:07 Server has received a bid from client 5001 with amount 100 and Lamport time 2 (Lamport time 3)
+2022/11/24 15:38:07 Start new auction with starting bid 100 and winnerId 5001.
+2022/11/24 15:38:07 Auction has started! Let the bidding begin!
+2022/11/24 15:38:09 Received a ping!
+2022/11/24 15:38:09 Received a ping!
+2022/11/24 15:38:11 Received a ping!
+2022/11/24 15:38:11 Received a ping!
+2022/11/24 15:38:11 Sending request to 6002
+2022/11/24 15:38:11 Sending request to 6001
+2022/11/24 15:38:11 Received acknowledgements from all backups.
+2022/11/24 15:38:11 Server has received a bid from client 5001 with amount 2000 and Lamport time 5 (Lamport time 6)
+2022/11/24 15:38:11 New bid 2000 from client 5001 is highest bid.
+2022/11/24 15:38:11 Extending auction.
+2022/11/24 15:38:13 Received a ping!
+2022/11/24 15:38:13 Sending request to 6002
+2022/11/24 15:38:13 Sending request to 6001
+2022/11/24 15:38:13 Received acknowledgements from all backups.
+2022/11/24 15:38:13 Server received result request.
+Sent result reply with outcome ONGOING, winnerId 5001 and winneramount 2000
+2022/11/24 15:38:13 Received a ping!
+2022/11/24 15:38:15 Received a ping!
+2022/11/24 15:38:15 Received a ping!
+2022/11/24 15:38:17 Received a ping!
+2022/11/24 15:38:17 Received a ping!
+2022/11/24 15:38:17 Auction is done!
+2022/11/24 15:38:19 Received a ping!
+2022/11/24 15:38:19 Received a ping!
+2022/11/24 15:38:21 Received a ping!
+2022/11/24 15:38:21 Received a ping!
+2022/11/24 15:38:23 Received a ping!
+2022/11/24 15:38:23 Received a ping!
 
 
 ./logfile.6001
-2022/11/24 14:45:03 Trying to ping primary server. 
-2022/11/24 14:45:03 Succesfully pinged primary server.
-2022/11/24 14:45:05 Trying to ping primary server. 
-2022/11/24 14:45:05 Succesfully pinged primary server.
-2022/11/24 14:45:07 Trying to ping primary server. 
-2022/11/24 14:45:07 Succesfully pinged primary server.
-2022/11/24 14:45:09 Trying to ping primary server. 
-2022/11/24 14:45:09 Succesfully pinged primary server.
-2022/11/24 14:45:11 Trying to ping primary server. 
-2022/11/24 14:45:11 Succesfully pinged primary server.
-2022/11/24 14:45:13 Trying to ping primary server. 
-2022/11/24 14:45:13 Succesfully pinged primary server.
-2022/11/24 14:45:15 Trying to ping primary server. 
-2022/11/24 14:45:15 Succesfully pinged primary server.
-2022/11/24 14:45:17 Trying to ping primary server. 
-2022/11/24 14:45:17 Succesfully pinged primary server.
-2022/11/24 14:45:19 Trying to ping primary server. 
-2022/11/24 14:45:19 Succesfully pinged primary server.
-2022/11/24 14:45:21 Trying to ping primary server. 
-2022/11/24 14:45:21 Succesfully pinged primary server.
-2022/11/24 14:45:23 Trying to ping primary server. 
-2022/11/24 14:45:23 Succesfully pinged primary server.
-2022/11/24 14:45:25 Trying to ping primary server. 
-2022/11/24 14:45:25 Succesfully pinged primary server.
+2022/11/24 15:36:48 Trying to ping primary server. 
+2022/11/24 15:36:48 Succesfully pinged primary server.
+2022/11/24 15:36:50 Trying to ping primary server. 
+2022/11/24 15:36:50 Succesfully pinged primary server.
+2022/11/24 15:36:52 Trying to ping primary server. 
+2022/11/24 15:36:52 Succesfully pinged primary server.
+2022/11/24 15:36:54 Trying to ping primary server. 
+2022/11/24 15:36:54 Succesfully pinged primary server.
+2022/11/24 15:36:56 Trying to ping primary server. 
+2022/11/24 15:36:56 Succesfully pinged primary server.
+2022/11/24 15:36:58 Trying to ping primary server. 
+2022/11/24 15:36:58 Succesfully pinged primary server.
+2022/11/24 15:37:00 Trying to ping primary server. 
+2022/11/24 15:37:00 Succesfully pinged primary server.
+2022/11/24 15:37:02 Trying to ping primary server. 
+2022/11/24 15:37:02 Succesfully pinged primary server.
+2022/11/24 15:37:04 Trying to ping primary server. 
+2022/11/24 15:37:04 Succesfully pinged primary server.
+2022/11/24 15:37:06 Trying to ping primary server. 
+2022/11/24 15:37:06 Succesfully pinged primary server.
+2022/11/24 15:37:08 Trying to ping primary server. 
+2022/11/24 15:37:08 Succesfully pinged primary server.
+2022/11/24 15:37:10 Trying to ping primary server. 
+2022/11/24 15:37:10 Succesfully pinged primary server.
+2022/11/24 15:37:12 Trying to ping primary server. 
+2022/11/24 15:37:12 Succesfully pinged primary server.
+2022/11/24 15:37:14 Trying to ping primary server. 
+2022/11/24 15:37:14 Succesfully pinged primary server.
+2022/11/24 15:37:16 Trying to ping primary server. 
+2022/11/24 15:37:16 Succesfully pinged primary server.
+2022/11/24 15:37:18 Trying to ping primary server. 
+2022/11/24 15:37:18 Succesfully pinged primary server.
+2022/11/24 15:37:20 Trying to ping primary server. 
+2022/11/24 15:37:20 Succesfully pinged primary server.
+2022/11/24 15:37:22 Trying to ping primary server. 
+2022/11/24 15:37:22 Succesfully pinged primary server.
+2022/11/24 15:37:24 Trying to ping primary server. 
+2022/11/24 15:37:24 Succesfully pinged primary server.
+2022/11/24 15:37:26 Trying to ping primary server. 
+2022/11/24 15:37:26 Succesfully pinged primary server.
+2022/11/24 15:37:28 Trying to ping primary server. 
+2022/11/24 15:37:28 Succesfully pinged primary server.
+2022/11/24 15:37:30 Trying to ping primary server. 
+2022/11/24 15:37:30 Succesfully pinged primary server.
+2022/11/24 15:37:32 Trying to ping primary server. 
+2022/11/24 15:37:32 Succesfully pinged primary server.
+2022/11/24 15:37:34 Trying to ping primary server. 
+2022/11/24 15:37:34 Succesfully pinged primary server.
+2022/11/24 15:37:36 Trying to ping primary server. 
+2022/11/24 15:37:36 Succesfully pinged primary server.
+2022/11/24 15:37:38 Trying to ping primary server. 
+2022/11/24 15:37:38 Succesfully pinged primary server.
+2022/11/24 15:37:41 Trying to ping primary server. 
+2022/11/24 15:37:41 Succesfully pinged primary server.
+2022/11/24 15:37:43 Trying to ping primary server. 
+2022/11/24 15:37:43 Succesfully pinged primary server.
+2022/11/24 15:37:45 Trying to ping primary server. 
+2022/11/24 15:37:45 Succesfully pinged primary server.
+2022/11/24 15:37:47 Trying to ping primary server. 
+2022/11/24 15:37:47 Succesfully pinged primary server.
+2022/11/24 15:37:49 Trying to ping primary server. 
+2022/11/24 15:37:49 Succesfully pinged primary server.
+2022/11/24 15:37:51 Trying to ping primary server. 
+2022/11/24 15:37:51 Succesfully pinged primary server.
+2022/11/24 15:37:53 Trying to ping primary server. 
+2022/11/24 15:37:53 Succesfully pinged primary server.
+2022/11/24 15:37:55 Trying to ping primary server. 
+2022/11/24 15:37:55 Succesfully pinged primary server.
+2022/11/24 15:37:57 Trying to ping primary server. 
+2022/11/24 15:37:57 Succesfully pinged primary server.
+2022/11/24 15:37:59 Trying to ping primary server. 
+2022/11/24 15:37:59 Succesfully pinged primary server.
+2022/11/24 15:38:01 Trying to ping primary server. 
+2022/11/24 15:38:01 Succesfully pinged primary server.
+2022/11/24 15:38:03 Trying to ping primary server. 
+2022/11/24 15:38:03 Succesfully pinged primary server.
+2022/11/24 15:38:05 Trying to ping primary server. 
+2022/11/24 15:38:05 Succesfully pinged primary server.
+2022/11/24 15:38:07 Trying to ping primary server. 
+2022/11/24 15:38:07 Succesfully pinged primary server.
+2022/11/24 15:38:07 Server has received a bid from client 5001 with amount 100 and Lamport time 2 (Lamport time 3)
+2022/11/24 15:38:07 Start new auction with starting bid 100 and winnerId 5001.
+2022/11/24 15:38:07 Auction has started! Let the bidding begin!
+2022/11/24 15:38:09 Trying to ping primary server. 
+2022/11/24 15:38:09 Succesfully pinged primary server.
+2022/11/24 15:38:11 Trying to ping primary server. 
+2022/11/24 15:38:11 Succesfully pinged primary server.
+2022/11/24 15:38:11 Server has received a bid from client 5001 with amount 2000 and Lamport time 5 (Lamport time 6)
+2022/11/24 15:38:11 New bid 2000 from client 5001 is highest bid.
+2022/11/24 15:38:11 Extending auction.
+2022/11/24 15:38:13 Trying to ping primary server. 
+2022/11/24 15:38:13 Succesfully pinged primary server.
+2022/11/24 15:38:13 Server received result request.
+Sent result reply with outcome ONGOING, winnerId 5001 and winneramount 2000
+2022/11/24 15:38:15 Trying to ping primary server. 
+2022/11/24 15:38:15 Succesfully pinged primary server.
+2022/11/24 15:38:17 Trying to ping primary server. 
+2022/11/24 15:38:17 Succesfully pinged primary server.
+2022/11/24 15:38:17 Auction is done!
+2022/11/24 15:38:19 Trying to ping primary server. 
+2022/11/24 15:38:19 Succesfully pinged primary server.
+2022/11/24 15:38:21 Trying to ping primary server. 
+2022/11/24 15:38:21 Succesfully pinged primary server.
+2022/11/24 15:38:23 Trying to ping primary server. 
+2022/11/24 15:38:23 Succesfully pinged primary server.
+2022/11/24 15:38:25 Trying to ping primary server. 
+2022/11/24 15:38:27 The king is dead. Long live the king!
+2022/11/24 15:38:27 New king of the hill is 6001
+2022/11/24 15:38:27 Received a ping!
+2022/11/24 15:38:27 Received a ping!
+2022/11/24 15:38:29 Received a ping!
+2022/11/24 15:38:31 Received a ping!
+2022/11/24 15:38:33 Received a ping!
+2022/11/24 15:38:35 Received a ping!
+2022/11/24 15:38:37 Received a ping!
+2022/11/24 15:38:39 Received a ping!
+2022/11/24 15:38:42 Received a ping!
+2022/11/24 15:38:44 Received a ping!
+2022/11/24 15:38:46 Received a ping!
+2022/11/24 15:38:48 Received a ping!
+2022/11/24 15:38:50 Received a ping!
+2022/11/24 15:38:52 Received a ping!
+2022/11/24 15:38:54 Received a ping!
+2022/11/24 15:38:56 Received a ping!
+2022/11/24 15:38:57 Sending request to 6002
+2022/11/24 15:38:57 Received acknowledgements from all backups.
+2022/11/24 15:38:57 Server received result request.
+Sent result reply with outcome FINISHED, winnerId 5001 and winneramount 2000
+2022/11/24 15:38:58 Received a ping!
+2022/11/24 15:39:00 Received a ping!
+2022/11/24 15:39:02 Received a ping!
+2022/11/24 15:39:04 Received a ping!
+2022/11/24 15:39:06 Received a ping!
+2022/11/24 15:39:08 Received a ping!
+2022/11/24 15:39:10 Received a ping!
+2022/11/24 15:39:12 Received a ping!
 
 
 ./logfile.6002
-2022/11/24 14:45:02 Trying to ping primary server. 
-2022/11/24 14:45:02 Succesfully pinged primary server.
-2022/11/24 14:45:04 Trying to ping primary server. 
-2022/11/24 14:45:04 Succesfully pinged primary server.
-2022/11/24 14:45:06 Trying to ping primary server. 
-2022/11/24 14:45:06 Succesfully pinged primary server.
-2022/11/24 14:45:08 Trying to ping primary server. 
-2022/11/24 14:45:08 Succesfully pinged primary server.
-2022/11/24 14:45:10 Trying to ping primary server. 
-2022/11/24 14:45:10 Succesfully pinged primary server.
-2022/11/24 14:45:12 Trying to ping primary server. 
-2022/11/24 14:45:12 Succesfully pinged primary server.
-2022/11/24 14:45:14 Trying to ping primary server. 
-2022/11/24 14:45:14 Succesfully pinged primary server.
-2022/11/24 14:45:16 Trying to ping primary server. 
-2022/11/24 14:45:16 Succesfully pinged primary server.
-2022/11/24 14:45:18 Trying to ping primary server. 
-2022/11/24 14:45:18 Succesfully pinged primary server.
-2022/11/24 14:45:20 Trying to ping primary server. 
-2022/11/24 14:45:20 Succesfully pinged primary server.
-2022/11/24 14:45:23 Trying to ping primary server. 
-2022/11/24 14:45:23 Succesfully pinged primary server.
-2022/11/24 14:45:25 Trying to ping primary server. 
-2022/11/24 14:45:25 Succesfully pinged primary server.
-2022/11/24 14:45:27 Trying to ping primary server. 
+2022/11/24 15:36:49 Trying to ping primary server. 
+2022/11/24 15:36:49 Succesfully pinged primary server.
+2022/11/24 15:36:51 Trying to ping primary server. 
+2022/11/24 15:36:51 Succesfully pinged primary server.
+2022/11/24 15:36:53 Trying to ping primary server. 
+2022/11/24 15:36:53 Succesfully pinged primary server.
+2022/11/24 15:36:55 Trying to ping primary server. 
+2022/11/24 15:36:55 Succesfully pinged primary server.
+2022/11/24 15:36:57 Trying to ping primary server. 
+2022/11/24 15:36:57 Succesfully pinged primary server.
+2022/11/24 15:36:59 Trying to ping primary server. 
+2022/11/24 15:36:59 Succesfully pinged primary server.
+2022/11/24 15:37:01 Trying to ping primary server. 
+2022/11/24 15:37:01 Succesfully pinged primary server.
+2022/11/24 15:37:03 Trying to ping primary server. 
+2022/11/24 15:37:03 Succesfully pinged primary server.
+2022/11/24 15:37:05 Trying to ping primary server. 
+2022/11/24 15:37:05 Succesfully pinged primary server.
+2022/11/24 15:37:07 Trying to ping primary server. 
+2022/11/24 15:37:07 Succesfully pinged primary server.
+2022/11/24 15:37:09 Trying to ping primary server. 
+2022/11/24 15:37:09 Succesfully pinged primary server.
+2022/11/24 15:37:11 Trying to ping primary server. 
+2022/11/24 15:37:11 Succesfully pinged primary server.
+2022/11/24 15:37:13 Trying to ping primary server. 
+2022/11/24 15:37:13 Succesfully pinged primary server.
+2022/11/24 15:37:15 Trying to ping primary server. 
+2022/11/24 15:37:15 Succesfully pinged primary server.
+2022/11/24 15:37:17 Trying to ping primary server. 
+2022/11/24 15:37:17 Succesfully pinged primary server.
+2022/11/24 15:37:19 Trying to ping primary server. 
+2022/11/24 15:37:19 Succesfully pinged primary server.
+2022/11/24 15:37:21 Trying to ping primary server. 
+2022/11/24 15:37:21 Succesfully pinged primary server.
+2022/11/24 15:37:23 Trying to ping primary server. 
+2022/11/24 15:37:23 Succesfully pinged primary server.
+2022/11/24 15:37:25 Trying to ping primary server. 
+2022/11/24 15:37:25 Succesfully pinged primary server.
+2022/11/24 15:37:27 Trying to ping primary server. 
+2022/11/24 15:37:27 Succesfully pinged primary server.
+2022/11/24 15:37:29 Trying to ping primary server. 
+2022/11/24 15:37:29 Succesfully pinged primary server.
+2022/11/24 15:37:31 Trying to ping primary server. 
+2022/11/24 15:37:31 Succesfully pinged primary server.
+2022/11/24 15:37:33 Trying to ping primary server. 
+2022/11/24 15:37:33 Succesfully pinged primary server.
+2022/11/24 15:37:35 Trying to ping primary server. 
+2022/11/24 15:37:35 Succesfully pinged primary server.
+2022/11/24 15:37:37 Trying to ping primary server. 
+2022/11/24 15:37:37 Succesfully pinged primary server.
+2022/11/24 15:37:39 Trying to ping primary server. 
+2022/11/24 15:37:39 Succesfully pinged primary server.
+2022/11/24 15:37:41 Trying to ping primary server. 
+2022/11/24 15:37:41 Succesfully pinged primary server.
+2022/11/24 15:37:43 Trying to ping primary server. 
+2022/11/24 15:37:43 Succesfully pinged primary server.
+2022/11/24 15:37:45 Trying to ping primary server. 
+2022/11/24 15:37:45 Succesfully pinged primary server.
+2022/11/24 15:37:47 Trying to ping primary server. 
+2022/11/24 15:37:47 Succesfully pinged primary server.
+2022/11/24 15:37:49 Trying to ping primary server. 
+2022/11/24 15:37:49 Succesfully pinged primary server.
+2022/11/24 15:37:51 Trying to ping primary server. 
+2022/11/24 15:37:51 Succesfully pinged primary server.
+2022/11/24 15:37:53 Trying to ping primary server. 
+2022/11/24 15:37:53 Succesfully pinged primary server.
+2022/11/24 15:37:55 Trying to ping primary server. 
+2022/11/24 15:37:55 Succesfully pinged primary server.
+2022/11/24 15:37:57 Trying to ping primary server. 
+2022/11/24 15:37:57 Succesfully pinged primary server.
+2022/11/24 15:37:59 Trying to ping primary server. 
+2022/11/24 15:37:59 Succesfully pinged primary server.
+2022/11/24 15:38:01 Trying to ping primary server. 
+2022/11/24 15:38:01 Succesfully pinged primary server.
+2022/11/24 15:38:03 Trying to ping primary server. 
+2022/11/24 15:38:03 Succesfully pinged primary server.
+2022/11/24 15:38:05 Trying to ping primary server. 
+2022/11/24 15:38:05 Succesfully pinged primary server.
+2022/11/24 15:38:07 Trying to ping primary server. 
+2022/11/24 15:38:07 Succesfully pinged primary server.
+2022/11/24 15:38:07 Server has received a bid from client 5001 with amount 100 and Lamport time 2 (Lamport time 3)
+2022/11/24 15:38:07 Start new auction with starting bid 100 and winnerId 5001.
+2022/11/24 15:38:07 Auction has started! Let the bidding begin!
+2022/11/24 15:38:09 Trying to ping primary server. 
+2022/11/24 15:38:09 Succesfully pinged primary server.
+2022/11/24 15:38:11 Trying to ping primary server. 
+2022/11/24 15:38:11 Succesfully pinged primary server.
+2022/11/24 15:38:11 Server has received a bid from client 5001 with amount 2000 and Lamport time 5 (Lamport time 6)
+2022/11/24 15:38:11 New bid 2000 from client 5001 is highest bid.
+2022/11/24 15:38:11 Extending auction.
+2022/11/24 15:38:13 Server received result request.
+Sent result reply with outcome ONGOING, winnerId 5001 and winneramount 2000
+2022/11/24 15:38:13 Trying to ping primary server. 
+2022/11/24 15:38:13 Succesfully pinged primary server.
+2022/11/24 15:38:15 Trying to ping primary server. 
+2022/11/24 15:38:15 Succesfully pinged primary server.
+2022/11/24 15:38:17 Trying to ping primary server. 
+2022/11/24 15:38:17 Succesfully pinged primary server.
+2022/11/24 15:38:17 Auction is done!
+2022/11/24 15:38:19 Trying to ping primary server. 
+2022/11/24 15:38:19 Succesfully pinged primary server.
+2022/11/24 15:38:21 Trying to ping primary server. 
+2022/11/24 15:38:21 Succesfully pinged primary server.
+2022/11/24 15:38:23 Trying to ping primary server. 
+2022/11/24 15:38:23 Succesfully pinged primary server.
+2022/11/24 15:38:25 Trying to ping primary server. 
+2022/11/24 15:38:27 Received a ping!
+2022/11/24 15:38:27 The king is dead. Long live the king!
+2022/11/24 15:38:27 New king of the hill is 6001
+2022/11/24 15:38:27 Trying to ping primary server. 
+2022/11/24 15:38:27 Succesfully pinged primary server.
+2022/11/24 15:38:29 Trying to ping primary server. 
+2022/11/24 15:38:29 Succesfully pinged primary server.
+2022/11/24 15:38:31 Trying to ping primary server. 
+2022/11/24 15:38:31 Succesfully pinged primary server.
+2022/11/24 15:38:33 Trying to ping primary server. 
+2022/11/24 15:38:33 Succesfully pinged primary server.
+2022/11/24 15:38:35 Trying to ping primary server. 
+2022/11/24 15:38:35 Succesfully pinged primary server.
+2022/11/24 15:38:37 Trying to ping primary server. 
+2022/11/24 15:38:37 Succesfully pinged primary server.
+2022/11/24 15:38:39 Trying to ping primary server. 
+2022/11/24 15:38:39 Succesfully pinged primary server.
+2022/11/24 15:38:42 Trying to ping primary server. 
+2022/11/24 15:38:42 Succesfully pinged primary server.
+2022/11/24 15:38:44 Trying to ping primary server. 
+2022/11/24 15:38:44 Succesfully pinged primary server.
+2022/11/24 15:38:46 Trying to ping primary server. 
+2022/11/24 15:38:46 Succesfully pinged primary server.
+2022/11/24 15:38:48 Trying to ping primary server. 
+2022/11/24 15:38:48 Succesfully pinged primary server.
+2022/11/24 15:38:50 Trying to ping primary server. 
+2022/11/24 15:38:50 Succesfully pinged primary server.
+2022/11/24 15:38:52 Trying to ping primary server. 
+2022/11/24 15:38:52 Succesfully pinged primary server.
+2022/11/24 15:38:54 Trying to ping primary server. 
+2022/11/24 15:38:54 Succesfully pinged primary server.
+2022/11/24 15:38:56 Trying to ping primary server. 
+2022/11/24 15:38:56 Succesfully pinged primary server.
+2022/11/24 15:38:57 Server received result request.
+Sent result reply with outcome FINISHED, winnerId 5001 and winneramount 2000
+2022/11/24 15:38:58 Trying to ping primary server. 
+2022/11/24 15:38:58 Succesfully pinged primary server.
+2022/11/24 15:39:00 Trying to ping primary server. 
+2022/11/24 15:39:00 Succesfully pinged primary server.
+2022/11/24 15:39:02 Trying to ping primary server. 
+2022/11/24 15:39:02 Succesfully pinged primary server.
+2022/11/24 15:39:04 Trying to ping primary server. 
+2022/11/24 15:39:04 Succesfully pinged primary server.
+2022/11/24 15:39:06 Trying to ping primary server. 
+2022/11/24 15:39:06 Succesfully pinged primary server.
+2022/11/24 15:39:08 Trying to ping primary server. 
+2022/11/24 15:39:08 Succesfully pinged primary server.
+2022/11/24 15:39:10 Trying to ping primary server. 
+2022/11/24 15:39:10 Succesfully pinged primary server.
+2022/11/24 15:39:12 Trying to ping primary server. 
+2022/11/24 15:39:12 Succesfully pinged primary server.
